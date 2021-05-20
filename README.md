@@ -13,7 +13,15 @@ CID
 3. Installation
 4. Features  
     4.1 cid.conf  
-    4.2 
+    4.2 cid and cid-gtk  
+    4.3 cid-change-pass and cid-change-pass-gtk  
+    4.4 CID Init Script  
+5. Logon scripts  
+    5.1 Logon.sh  
+    5.2 Logon_root.sh  
+    5.3 Mapping file shares (shares.xml)  
+    5.4 Mapping shared printers  
+6. Troubleshooting
 
 
 ## Description
@@ -57,36 +65,39 @@ You can do things like:
 ### Installation of the requirements in the main Linux distributions
 
 #### Debian (>= 9):
-    apt install passwd sudo acl attr systemd x11-xserver-utils policykit-1 zenity iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-winbind samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient samba cifs-utils libpam-mount cups-daemon cups-client
+    # apt install passwd sudo acl attr systemd x11-xserver-utils policykit-1 zenity iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-winbind samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient samba cifs-utils libpam-mount cups-daemon cups-client
 
 #### Fedora (>= 30):
-    dnf install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups cups-client
+    # dnf install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups cups-client
 
 #### OpenSUSE (>= 15):
-	zypper install sudo acl attr systemd xhost zenity iproute2 iputils keyutils krb5-client samba-dsdb-modules gvfs-backend-samba samba-winbind samba-client samba cifs-utils pam_mount cups-client cups
+	# zypper install sudo acl attr systemd xhost zenity iproute2 iputils keyutils krb5-client samba-dsdb-modules gvfs-backend-samba samba-winbind samba-client samba cifs-utils pam_mount cups-client cups
 
 #### CentOS (= 7):
-    yum install epel-release
-    yum install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups
+    # yum install epel-release
+    # yum install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups
 
 
 ## Installation
-**Installation requires root privileges!**  
+After installing the requirements, download the CID source package, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-Run the **INSTALL.sh** file (in this directory) as follows:
-
-    ./INSTALL.sh
+    $ wget http://downloads.sf.net/c-i-d/cid-1.1.2.tar.gz
+    $ tar -xzf cid-1.1.2.tar.gz
+    $ sudo cid-1.1.2/INSTALL.sh
 
 **Note 1:** Run **./INSTALL.sh uninstall** to uninstall the program files from the same version of the package.
 
-**Note 2:** In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the requirements marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+**Note 2:** In ***Ubuntu*** and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the requirements marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
 
-    add-apt-repository ppa:emoraes25/cid && apt update
-    apt install cid cid-gtk
+    # add-apt-repository ppa:emoraes25/cid
+    # apt update
+    # apt install cid cid-gtk
 
 
 ## Features
 
 
 ___
+>Release 1.1.2 [2021-05-15]  
+>
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
