@@ -2,7 +2,6 @@ CID
 =
 
 **License: GPL-3+**  
-*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*  
 
 [Homepage](https://c-i-d.sourceforge.io)  
 [Documentation](https://sourceforge.net/p/c-i-d/documentation)  
@@ -77,3 +76,5 @@ Run the **INSTALL.sh** file (in this directory) as follows:
 
     add-apt-repository ppa:emoraes25/cid && apt update
     apt install cid cid-gtk
+
+*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
