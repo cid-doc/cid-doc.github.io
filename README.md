@@ -7,21 +7,20 @@ CID
 
 
 ## Contents
-1. Description
-2. Requirements  
-    2.1 Installation of the requirements in the main Linux distributions  
-3. Installation
-4. Features  
-    4.1 cid.conf  
-    4.2 cid and cid-gtk  
-    4.3 cid-change-pass and cid-change-pass-gtk  
-    4.4 CID Init Script  
-5. Logon scripts  
-    5.1 Logon.sh  
-    5.2 Logon_root.sh  
-    5.3 Mapping file shares (shares.xml)  
-    5.4 Mapping shared printers  
-6. Troubleshooting
+- Description
+- Requirements  
+    - Installation of the requirements in the main Linux distributions  
+- Installation
+- Features  
+    - cid and cid-gtk  
+    - cid-change-pass and cid-change-pass-gtk  
+    - cid.conf  
+    - CID Init Script  
+- Logon scripts  
+    - logon.sh and logon_root.sh  
+    - Mapping file shares (shares.xml)  
+    - Mapping shared printers  
+- Troubleshooting
 
 
 ## Description
@@ -79,15 +78,15 @@ You can do things like:
 
 
 ## Installation
-After installing the requirements, download the CID source package, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
+After installing the requirements, download the source package, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
     $ wget http://downloads.sf.net/c-i-d/cid-1.1.2.tar.gz
     $ tar -xzf cid-1.1.2.tar.gz
     $ sudo cid-1.1.2/INSTALL.sh
 
-**Note 1:** Run **./INSTALL.sh uninstall** to uninstall the program files from the same version of the package.
+**Note 1:** Run `./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
 
-**Note 2:** In ***Ubuntu*** and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the requirements marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+**Note 2:** In **Ubuntu** and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the requirements marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
 
     # add-apt-repository ppa:emoraes25/cid
     # apt update
@@ -95,9 +94,35 @@ After installing the requirements, download the CID source package, unzip it and
 
 
 ## Features
+The CID consists of four main executables subdivided into two graphical tools and two command line utilities. Both pairs contain equivalent features and they all accept the following general options as a command line argument:  
+
+| Options       | Description               |
+| ------------- | ------------------------- |
+| -v, --version | Show the version and exit |
+| -h, --help    | Show the help and exit    |
+
+### cid and cid-gtk
+
+### cid-change-pass and cid-change-pass-gtk
+
+### cid.conf
+
+### CID Init Script
 
 
-___
->Release 1.1.2 [2021-05-15]  
+## Logon scripts
+
+### logon.sh and logon_root.sh
+
+### Mapping file shares (shares.xml)
+
+### Mapping shared printers
+
+
+## Troubleshooting
+
+
+
+>Release 1.1.2 2021-05-15  
 >
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
