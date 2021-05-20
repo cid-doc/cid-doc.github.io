@@ -1,19 +1,25 @@
 CID
-=
+===
 
-**License: GPL-3+**  
+**License: [GPL-3+](https://sourceforge.net/projects/c-i-d/files/COPYING)**  
 
-[Homepage](https://c-i-d.sourceforge.io)  
-[Documentation](https://sourceforge.net/p/c-i-d/documentation)  
-[Discussion](https://sourceforge.net/p/c-i-d/discussion/)  
-[Donations](https://sourceforge.net/p/c-i-d/donate)  
+[Homepage](https://c-i-d.sourceforge.io) | [Discussion](https://sourceforge.net/p/c-i-d/discussion/) | [Donations](https://sourceforge.net/p/c-i-d/donate)  
 
 
-## DESCRIPTION
-**CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in **Active Directory** domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.
+## Contents
+1. Description
+2. Requirements  
+    2.1 Installation of the requirements in the main Linux distributions  
+3. Installation
+4. Features  
+    4.1 cid.conf  
+    4.2 
 
 
-## FEATURES
+## Description
+**CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in **Active Directory** domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.  
+
+You can do things like:  
 - Run logon scripts
 - Automatically mount network shares (files and printers)
 - Offline logon (Credential cache)
@@ -22,7 +28,7 @@ CID
 - Apply disk quota per shared directory (such as Windows Server)
 
 
-## REQUIREMENTS
+## Requirements
 - bash (>= 4)
 - awk (= any)
 - {diff,find,core}utils (= any)
@@ -48,7 +54,7 @@ CID
 - pam_mount (>= 2.14)
 - CUPS [server and clients tools] (= any)
 
-### INSTALLATION OF THE REQUIREMENTS IN THE MAIN LINUX DISTRIBUTIONS
+### Installation of the requirements in the main Linux distributions
 
 #### Debian (>= 9):
     apt install passwd sudo acl attr systemd x11-xserver-utils policykit-1 zenity iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-winbind samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient samba cifs-utils libpam-mount cups-daemon cups-client
@@ -64,8 +70,9 @@ CID
     yum install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups
 
 
-## INSTALLATION
+## Installation
 **Installation requires root privileges!**  
+
 Run the **INSTALL.sh** file (in this directory) as follows:
 
     ./INSTALL.sh
@@ -77,4 +84,9 @@ Run the **INSTALL.sh** file (in this directory) as follows:
     add-apt-repository ppa:emoraes25/cid && apt update
     apt install cid cid-gtk
 
-*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
+
+## Features
+
+
+___
+>*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
