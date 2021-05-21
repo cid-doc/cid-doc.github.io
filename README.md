@@ -18,6 +18,14 @@ CID
     - [Ubuntu and derivatives](#Ubuntu)  
 - [Features](#Features)  
     - [cid and cid-gtk](#cid_cid-gtk)  
+    	- [Join the domain](#join)  
+    	- [Remove from domain](#leave)  
+    	- [Change station behavior](#behavior)  
+    	- [Block logon](#block)  
+    	- [Unblock logon](#unblock)  
+    	- [Manage domain accounts in local groups](#account)  
+    	- [Manage shares](#shares)  
+    	- [Help](#help)  
     - [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
     - [cid.conf](#cid.conf)  
     - [CID Init Script](#CIS)  
@@ -93,7 +101,7 @@ After installing the requirements, download the source package, unzip it and run
 >**Note:** Run `sudo cid-1.1.2/INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
 
 ### Ubuntu and derivatives <a name="Ubuntu" />
-In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the [requirements](#Requiriments) marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the [requirements](#Requirements) marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
 
     # add-apt-repository ppa:emoraes25/cid
     # apt update
@@ -109,6 +117,22 @@ The CID consists of four main executables subdivided into two graphical tools an
 | -h, --help    | Show the help and exit    |
 
 ### cid and cid-gtk <a name="cid_cid-gtk" />
+
+#### Join the domain <a name="join" />
+
+#### Remove from domain <a name="leave" />
+
+#### Change station behavior <a name="behavior" />
+
+#### Block logon <a name="block" />
+
+#### Unblock logon <a name="unblock" />
+
+#### Manage domain accounts in local groups <a name="account" />
+
+#### Manage shares <a name="shares" />
+
+#### Help <a name="help" />
 
 ### cid-change-pass and cid-change-pass-gtk <a name="ccp_ccp-gtk" />
 
