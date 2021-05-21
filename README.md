@@ -109,7 +109,7 @@ In *Ubuntu* and its derivations it is possible to install the CID through packag
 
 
 ## Features <a name="Features" />
-The CID consists of four main executables subdivided into two graphical tools and two command line utilities. Both pairs contain equivalent features and they all accept the following general options as a command line argument:  
+The CID consists of four main executables subdivided into two graphical tools (`cid-gtk` and `cid-change-pass-gtk`) and two command line utilities (`cid` and `cid-change-pass`). Both pairs contain equivalent features and they all accept the following general options as a command line argument:  
 
 | Options       | Description               |
 | ------------- | ------------------------- |
