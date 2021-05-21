@@ -92,7 +92,7 @@ The requirements of the CID can be easily installed through the package managers
 
 
 ## Installation <a name="Installation" />
-After installing the requirements, download the source package, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
+After installing the requirements, download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
     $ wget http://downloads.sf.net/c-i-d/cid-1.1.2.tar.gz
     $ tar -xzf cid-1.1.2.tar.gz
@@ -117,9 +117,14 @@ The CID consists of four main executables subdivided into two graphical tools (`
 | -h, --help    | Show the help and exit    |
 
 ### cid and cid-gtk <a name="cid_cid-gtk" />
-The `cid` (CLI) and the `cid-gtk` (GUI) are the tools that contain the main functions of the program. Both have the same set of features, which will be explored below:
+The **cid-gtk** (_GUI_) is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system, within this context.  
+
+The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts. Use the `man cid` command to access the complete manual for that utility.  
+
+The features available in these two tools are described in the following sections:
 
 #### Join the domain <a name="join" />
+
 
 #### Remove from domain <a name="leave" />
 
