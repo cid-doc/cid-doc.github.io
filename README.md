@@ -117,6 +117,7 @@ The CID consists of four main executables subdivided into two graphical tools (`
 | -h, --help    | Show the help and exit    |
 
 ### cid and cid-gtk <a name="cid_cid-gtk" />
+The `cid` (CLI) and the `cid-gtk` (GUI) are the tools that contain the main functions of the program. Both have the same set of features, which will be explored below:
 
 #### Join the domain <a name="join" />
 
