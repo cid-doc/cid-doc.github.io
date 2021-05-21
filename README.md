@@ -10,7 +10,12 @@ CID
 - [Description](#Description)
 - [Requirements](#Requirements)  
     - [Installation of the requirements in the main Linux distributions](#Install_Requirements)  
+        - [Debian](#Debian)
+        - [Fedora](#Fedora)
+        - [OpenSUSE](#OpenSUSE)  
+        - [CentOS](#CentOS)  
 - [Installation](#Installation)
+    - [Ubuntu and derivatives](#Ubuntu)  
 - [Features](#Features)  
     - [cid and cid-gtk](#cid_cid-gtk)  
     - [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
@@ -62,17 +67,18 @@ You can do things like:
 - CUPS [server and clients tools] (= any)
 
 ### Installation of the requirements in the main Linux distributions <a name="Install_Requirements" />
+The requirements of the CID can be easily installed through the package managers of these distributions:
 
-#### Debian (>= 9):
+#### Debian <a name="Debian" />
     # apt install passwd sudo acl attr systemd x11-xserver-utils policykit-1 zenity iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-winbind samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient samba cifs-utils libpam-mount cups-daemon cups-client
 
-#### Fedora (>= 30):
+#### Fedora <a name="Fedora" />
     # dnf install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups cups-client
 
-#### OpenSUSE (>= 15):
+#### OpenSUSE <a name="OpenSUSE" />
 	# zypper install sudo acl attr systemd xhost zenity iproute2 iputils keyutils krb5-client samba-dsdb-modules gvfs-backend-samba samba-winbind samba-client samba cifs-utils pam_mount cups-client cups
 
-#### CentOS (= 7):
+#### CentOS <a name="CentOS" />
     # yum install epel-release
     # yum install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups
 
@@ -84,9 +90,10 @@ After installing the requirements, download the source package, unzip it and run
     $ tar -xzf cid-1.1.2.tar.gz
     $ sudo cid-1.1.2/INSTALL.sh
 
-**Note 1:** Run `./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
+>**Note:** Run `sudo cid-1.1.2/INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
 
-**Note 2:** In **Ubuntu** and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the requirements marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+### Ubuntu and derivatives <a name="Ubuntu" />
+In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the [requirements](#Requiriments) marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
 
     # add-apt-repository ppa:emoraes25/cid
     # apt update
