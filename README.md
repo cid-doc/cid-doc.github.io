@@ -185,11 +185,24 @@ The **Remove account** option lists domain accounts added to local groups and al
 >**Note:** Members of the **domain admins** group are already associated with local groups by default.
 
 #### Manage shares <a name="shares" />
+This function allows you to manage _Samba_ shares intuitively.  
+
+The **Add share** option displays a form where you must enter the arguments to create or update a share.  
+
+Three share modes are available:
+
+| Mode           | Description |
+| -------------- | ----------- |
+| **Common**     | Mode used by default if the argument is omitted. This mode allows share permissions to be managed locally through the `Rule` argument, or through a remote Windows system using the **Microsoft Management Console** (MMC) |
+| **Userfolder** | This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `path` argument must contain the path of the parent directory where the folders for each user share are to be created. If this argument is omitted, the `/home` directory will be assumed by default. If `disk quota` is used, it will be automatically applied to each user directory |
+| **Printer**    | Mode used to share a printer configured on the local _CUPS_ server through Samba (_SMB protocol_). This is optional or unnecessary when the `Share all printers on CUPS` option (see [Advanced mode](#advanced)) is enabled. In this mode, the `Path` field should be named after a printer configured in CUPS instead of a directory path. If left blank, this argument will receive the value used in the `Name` field or vice versa. When printer sharing is enabled, a special file share called **print$** will be configured to automatically provide shared printer drivers to Windows clients on the network. The location of the directory to be used for this share can be adjusted using the `prtdrvdir` parameter in the [cid.conf](#cid.conf) file. Driver files must be manually copied to this directory or you must use a Windows system utility to manage the drivers on that print server (visit this <a href="https://wiki.samba.org/index.php/ Setting_up_Automatic_Printer_Driver_Downloads_for_Windows_Clients">link</a> for more information) |
 
 #### Help <a name="help" />
 
 ### cid <a name="cid" />
-The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts. Use the `man cid` command to access the complete manual for that utility.  
+The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts.  
+
+Use `man cid` command to access the complete manual for that utility.  
 
 ### cid-change-pass and cid-change-pass-gtk <a name="ccp_ccp-gtk" />
 
