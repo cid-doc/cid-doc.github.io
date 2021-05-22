@@ -19,7 +19,7 @@ CID
 - [Features](#Features)  
     - [cid-gtk](#cid-gtk)  
     	- [Join the domain](#join)  
-    	    - [Advanced mode](#advanced)
+    	    - [Advanced mode](#advanced)  
     	- [Remove from domain](#leave)  
     	- [Change station behavior](#behavior)  
     	- [Block logon](#block)  
