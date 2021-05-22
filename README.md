@@ -112,7 +112,7 @@ In *Ubuntu* and its derivations it is possible to install the CID through packag
 
 
 ## Features <a name="Features" />
-The CID consists of four main executables subdivided into two graphical tools (`cid-gtk` and `cid-change-pass-gtk`) and two command line utilities (`cid` and `cid-change-pass`). Both pairs contain equivalent features and they all accept the following general options as a command line argument:  
+The CID consists of four main executables subdivided into two graphical tools (`cid-gtk` and `cid-change-pass-gtk`) and two command line utilities (`cid` and `cid-change-pass`). Both pairs contain equivalent features and they all accept the following general options as a argument in the command line:  
 
 | Options           | Description               |
 | ----------------- | ------------------------- |
@@ -147,6 +147,11 @@ The options available in advanced mode are:
 | **Disable credential caching**          | Disables Samba support for off-line authentication, or authentication with local cached credentials. This requires real-time communication with the authentication server for the logins the domain users |
 | **Disable logon scripts**               | This disables [logon scripts](#Logon_scripts) |
 | **Do not use domain as default**        | Configures Samba not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument |
+| **Enable authentication for "sudo"**    | This requires that domain users who are given administrative privileges on the Linux computer need to authenticate when running the `sudo` command (see [Manage domain accounts in local groups](#account)) |
+| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the _idmap_ad_ backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the _idmap_autorid_ backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />**Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />**Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />**winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default |
+| **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option |
+| **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab |
+| **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The CID will filter the contents of this file so that there are no conflict with the defined parameters by default |
 
 #### Remove from domain <a name="leave" />
 
