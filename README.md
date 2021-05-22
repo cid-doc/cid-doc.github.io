@@ -19,7 +19,7 @@ CID
 - [Features](#Features)  
     - [cid-gtk](#cid-gtk)  
     	- [Join the domain](#join)  
-    	    - [Advanced mode](#advanced)  
+    	      - [Advanced mode](#advanced)  
     	- [Remove from domain](#leave)  
     	- [Change station behavior](#behavior)  
     	- [Block logon](#block)  
@@ -130,10 +130,10 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 | Field                   | Description |
 | ----------------------- | ----------- |
 | **Domain**              | Domain name (FQDN) |
-| **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers). |
+| **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers) |
 | **User**                | Domain administrator user |
 | **Password**            | User password |
-| **Mode**                | In this field, you can select one of two joining modes: **Default** or **Advanced**. The Default mode is adopted if no selection is made. Advanced mode opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode. See a detail of these options in the [Advanced mode](#advanced) section. |
+| **Mode**                | Select one of two join modes: **Default** or **Advanced**. _Default_ mode is adopted if no selection is made. [Advanced mode](#advanced) opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode |
 
 >**Note:** Before modifying the system files, the CID makes a backup of these files in the `/var/lib/cid/backups/ori` directory.
 
@@ -172,17 +172,17 @@ This function restricts logon in the system to a specific user or group of the d
 This function removes the logon restriction applied by the [block logon](#block) function.
 
 #### Manage domain accounts in local groups <a name="account" />
-This function allows you to associate domain user accounts with local system groups so that they can perform special tasks or routines that require administrative privileges.
+This function allows you to associate domain user accounts with local system groups so that they can perform specific tasks or routines that require administrative privileges.  
  
-The CID is based on the system's default user account (usually the first user account created on the system) to determine these local groups. You specify any other user using the defaultuserid parameter in the cid.conf file. You can also inform other specific groups, of which this user is not a member, using the localgroups parameter in cid.conf.
+The CID uses the groups that the **default user** (usually the first user created on the system) belongs to to determine these groups. You can specify any other user using the `defaultuserid` parameter, and you can also add other specific groups using the `localgroups` parameter in the [cid.conf](#cid.conf) file.  
 
-In the Add account option, you must inform the type and name of the account in the same way as when using the block logon function.
+In the **Add account** option, you must inform the type and name of the account in the same way as when using the [block logon](#block) function.  
 
-Note that on Unix systems there is no group nesting. Therefore, when a group account is added, members of that group are individually associated with local groups as they log on to this system. If you enter an asterisk at the end of the group name (group name *), all of its members will be immediately associated. If the user is removed from the domain group, the user will be automatically removed from local groups on a next login to this computer.
+Note that on Unix systems there is no group nesting. Therefore, when a group account is added, members of that group are individually associated with local groups as they log on to this system. If you enter an asterisk (*) at the end of the group's name, all its members will be immediately associated. If the user is removed from the domain group, the user will be automatically removed from local groups on a next login to this computer.
 
-The Remove Account option lists domain accounts added to local groups and allows you to select them for removal.
+The **Remove account** option lists domain accounts added to local groups and allows you to select them for removal.
 
-Note: Members of the domain administrators group are already associated with local groups by default.
+>**Note:** Members of the **domain admins** group are already associated with local groups by default.
 
 #### Manage shares <a name="shares" />
 
