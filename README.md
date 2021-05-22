@@ -77,7 +77,7 @@ You can do things like:
 - CUPS [server and clients tools] (= any)
 
 ### Installation of the requirements in the main Linux distributions <a name="Install_Requirements" />
-The requirements of the CID can be easily installed through the package managers of these distributions:
+The requirements can be easily installed through the package managers of these distributions:
 
 #### Debian <a name="Debian" />
     # apt install passwd sudo acl attr systemd x11-xserver-utils policykit-1 zenity iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-winbind samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient samba cifs-utils libpam-mount cups-daemon cups-client
