@@ -166,7 +166,7 @@ This function allows you to change the options of the [Advanced mode](#advanced)
 >**Note:** Whenever a change is made through this função, a copy of the affected files in the state before modification is stored in the `/var/lib/cid/backups/mod` directory.
 
 #### Block logon <a name="block" />
-This function restricts logon in the system to a specific user or group of the domain. When selecting it you must inform the **Account type** (User or Group) and the **Account name**. If no type is selected, the _User_ type is assumed by default.
+This function restricts logon in the system to a specific user or group of the domain. When selecting it you must inform the **Account Type** (User or Group) and the **Account Name**. If no type is selected, the _User_ type is assumed by default.
 
 #### Unblock logon <a name="unblock" />
 This function removes the logon restriction applied by the [block logon](#block) function.
