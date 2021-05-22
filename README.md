@@ -133,12 +133,12 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 | **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers). |
 | **User**                | Domain administrator user |
 | **Password**            | User password |
-| **Mode**                | In this field, you can select one of two joining modes: **Default** or **Advanced**. The Default mode is adopted if no selection is made. Advanced mode opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the standard mode. This means that when one of these options is not selected, it can be concluded that the CID will perform the reverse configuration equivalent to it in the system. See a detail of these options in the [Advanced mode](#advanced) section. |
+| **Mode**                | In this field, you can select one of two joining modes: **Default** or **Advanced**. The Default mode is adopted if no selection is made. Advanced mode opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode. See a detail of these options in the [Advanced mode](#advanced) section. |
 
 >**Note:** Before modifying the system files, the CID makes a backup of these files in the `/var/lib/cid/backups/ori` directory.
 
 ##### Advanced mode <a name="advanced" />
-The options available in advanced mode are:
+The options available in this mode are:
 
 | Option                                  | Description |
 | --------------------------------------- | ----------- |
@@ -148,18 +148,28 @@ The options available in advanced mode are:
 | **Disable logon scripts**               | This disables [logon scripts](#Logon_scripts) |
 | **Do not use domain as default**        | Configures Samba not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument |
 | **Enable authentication for "sudo"**    | This requires that domain users who are given administrative privileges on the Linux computer need to authenticate when running the `sudo` command (see [Manage domain accounts in local groups](#account)) |
-| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the _idmap_ad_ backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the _idmap_autorid_ backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />**Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />**Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />**winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default |
+| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the **idmap_ad** backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the **idmap_autorid** backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default |
 | **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option |
 | **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab |
 | **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The CID will filter the contents of this file so that there are no conflict with the defined parameters by default |
 
 #### Remove from domain <a name="leave" />
+This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
+
+When using it, you can optionally fill in the fields with the credentials of a domain administrator for what the CID try remotely delete the computer account from the AD database. If this fails, the operation of this function will not be affected.
+
+>**Note:** A copy of the files modified during this process is stored in the `/var/lib/cid/backups/mod` directory.
 
 #### Change station behavior <a name="behavior" />
+This function allows you to change the options of the [Advanced mode](#advanced) after the system joins an AD domain.
+
+>**Note:** Whenever a change is made through this função, a copy of the affected files in the state before modification is stored in the `/var/lib/cid/backups/mod` directory.
 
 #### Block logon <a name="block" />
+This function restricts logon in the system to a specific user or group of the domain. When selecting it you must inform the **account type** (User or Group), and the **account name**. If no type is selected, the _User_ type is assumed by default.
 
 #### Unblock logon <a name="unblock" />
+This function removes the logon restriction applied by the [block logon](#block) function.
 
 #### Manage domain accounts in local groups <a name="account" />
 
