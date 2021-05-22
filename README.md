@@ -166,12 +166,23 @@ This function allows you to change the options of the [Advanced mode](#advanced)
 >**Note:** Whenever a change is made through this função, a copy of the affected files in the state before modification is stored in the `/var/lib/cid/backups/mod` directory.
 
 #### Block logon <a name="block" />
-This function restricts logon in the system to a specific user or group of the domain. When selecting it you must inform the **account type** (User or Group), and the **account name**. If no type is selected, the _User_ type is assumed by default.
+This function restricts logon in the system to a specific user or group of the domain. When selecting it you must inform the **Account type** (User or Group) and the **Account name**. If no type is selected, the _User_ type is assumed by default.
 
 #### Unblock logon <a name="unblock" />
 This function removes the logon restriction applied by the [block logon](#block) function.
 
 #### Manage domain accounts in local groups <a name="account" />
+This function allows you to associate domain user accounts with local system groups so that they can perform special tasks or routines that require administrative privileges.
+ 
+The CID is based on the system's default user account (usually the first user account created on the system) to determine these local groups. You specify any other user using the defaultuserid parameter in the cid.conf file. You can also inform other specific groups, of which this user is not a member, using the localgroups parameter in cid.conf.
+
+In the Add account option, you must inform the type and name of the account in the same way as when using the block logon function.
+
+Note that on Unix systems there is no group nesting. Therefore, when a group account is added, members of that group are individually associated with local groups as they log on to this system. If you enter an asterisk at the end of the group name (group name *), all of its members will be immediately associated. If the user is removed from the domain group, the user will be automatically removed from local groups on a next login to this computer.
+
+The Remove Account option lists domain accounts added to local groups and allows you to select them for removal.
+
+Note: Members of the domain administrators group are already associated with local groups by default.
 
 #### Manage shares <a name="shares" />
 
