@@ -203,16 +203,16 @@ The access permissions of the share can be managed locally through the `Rule` ar
 
 When set locally, permissions are translated into extended _POSIX ACLs_ and interpreted by Samba as _Windows ACLs_. They must be composed of 03 fields separated by colons (:) and have the format **[Type]:Account:[Permission]**, where:
 
-- The type is **u** for user or **g** for group;
-- Account is a domain user or group;
-- Permission is **r** for read-only, **f** for full access or **d** for access denied;
+- **Type** is **u** for user or **g** for group;
+- **Account** is a domain user or group;
+- **Permission** is **r** for read-only, **f** for full access or **d** for access denied;
 
 Other important aspects about permissions are:
 
 - You can specify more than one permission at the same time, separating them with a semicolon (**;**).
 - Use a plus sign (**+**) at the beginning of the expression to append a new permission to the pre-existing permissions of the shared directory.
 - Use a minus sign (**-**) at the beginning of the expression to remove pre-existing permissions on the shared directory. In this case, the expression must contain only the type and name of the account (eg **-u:username**).
-- The **everyone** term can be used in the account field to represent all users.
+- The **everyone** term can be used in the **Account** field to represent **all users**.
 - If no permissions are specified when creating a share, all users will be given **read-only** permission.
 
 ##### Userfolder mode <a name="userfolder" />
@@ -229,10 +229,10 @@ Here is the complete list of arguments for a share:
 | **Name**                                | Name of a new share or share to be updated. In an update it is only necessary to fill in the fields that will be changed |
 | **Template**                            | Select a template for the share. The properties of the template will be copied to the share, except those that are specified. The Template argument can also be used to select a share to update, if the `Name` argument is left blank. [Userfolder mode](#userfolder) does not support this argument |
 | **Path**                                | Directory path or CUPS printer name |
-| **Rule**                                | Use this argument to manage share permissions in [Common mode](#common) |
+| **Rule**                                | Use this argument to manage share permissions in [Common mode](#common).Examples:<br/>**g:domain users:f**<br />**+u:guest user:r**<br />**-u:guest user**<br />**g:domain users:f;u:guest user:d** |
 | **Comment**                             | Provides a description for the share. This is optional |
-| **Disk Quota Size**                     | Disk quota applied to the shared directory in the [Common](#common) and [Userfolder](#userfolder) share modes. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an integer to indicate a unit (kilobytes, megabytes, gigabytes ...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a disk quota previously applied to the share. The quota feature is currently only available for shared directories on **XFS** file systems |
-| **Tolerance Quota Size**                | Size of the tolerance quota that will be temporarily allowed when the disk quota is reached. The tolerance quota is optional and can only be used during the period determined by the `qttltime` parameter in [cid.conf](#cid.conf). After this period, the shared directory will not be able to write any more files until the use of its disk space is reduced to a value lower than the one defined in the disk quota size. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an integer to indicate a unit (kilobytes, megabytes, gigabytes...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a tolerance quota previously applied to the share. The quota feature is currently available only for directories shared on **XFS** file systems |
+| **Disk Quota Size**                     | Disk quota applied to the shared directory in the [Common](#common) and [Userfolder](#userfolder) share modes. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes ...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a disk quota previously applied to the share. The quota feature is currently only available for shared directories on **XFS** file systems |
+| **Tolerance Quota Size**                | Size of the tolerance quota that will be temporarily allowed when the disk quota is reached. The tolerance quota is optional and can only be used during the period determined by the `qttltime` parameter in [cid.conf](#cid.conf). After this period, the shared directory will not be able to write any more files until the use of its disk space is reduced to a value lower than the one defined in the disk quota size. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a tolerance quota previously applied to the share. The quota feature is currently available only for directories shared on **XFS** file systems |
 | **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the `disk quota` and `tolerance quota` (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder) |
 | **Hidden**                              | If set to **Yes**, hides the share of the list of available shares in the net view and browse list. The default value is **No** |
 | **Allow Guest**                         | If set to **Yes**, allows the share to be accessed without authentication (no password) by any user. The default value is **No** |
