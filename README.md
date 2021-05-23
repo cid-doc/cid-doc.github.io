@@ -225,18 +225,18 @@ Here is the complete list of arguments for a share:
 
 | Argument                                | Description |
 | --------------------------------------- | ----------- |
-| **Mode**                                | Share mode. [Common mode](#common) is adopted if no selection is made |
-| **Name**                                | Name of a new share or share to be updated. In an update it is only necessary to fill in the fields that will be changed |
-| **Template**                            | Select a template for the share. The properties of the template will be copied to the share, except those that are specified. The Template argument can also be used to select a share to update, if the `Name` argument is left blank. [Userfolder mode](#userfolder) does not support this argument |
-| **Path**                                | Directory path or CUPS printer name |
-| **Rule**                                | Use this argument to manage share permissions in [Common mode](#common). Examples:<br/><br/>**g:domain users:f**<br />**+u:guest user:r**<br />**-u:guest user**<br />**g:domain users:f;u:guest user:d** |
+| **Mode**                                | Share mode. [Common mode](#common) is adopted if no selection is made. |
+| **Name**                                | Name of a new share or share to be updated. In an update it is only necessary to fill in the fields that will be changed. |
+| **Template**                            | Select a template for the share. The properties of the template will be copied to the share, except those that are specified. The Template argument can also be used to select a share to update, if the `Name` argument is left blank. [Userfolder mode](#userfolder) does not support this argument. |
+| **Path**                                | Directory path or CUPS printer name. |
+| **Rule**                                | Use this argument to manage share permissions in [Common mode](#common). |
 | **Comment**                             | Provides a description for the share. This is optional |
-| **Disk Quota Size**                     | Disk quota applied to the shared directory in the [Common](#common) and [Userfolder](#userfolder) share modes. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes ...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a disk quota previously applied to the share. The quota feature is currently only available for shared directories on **XFS** file systems |
-| **Tolerance Quota Size**                | Size of the tolerance quota that will be temporarily allowed when the disk quota is reached. The tolerance quota is optional and can only be used during the period determined by the `qttltime` parameter in [cid.conf](#cid.conf). After this period, the shared directory will not be able to write any more files until the use of its disk space is reduced to a value lower than the one defined in the disk quota size. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a tolerance quota previously applied to the share. The quota feature is currently available only for directories shared on **XFS** file systems |
-| **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the `disk quota` and `tolerance quota` (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder) |
-| **Hidden**                              | If set to **Yes**, hides the share of the list of available shares in the net view and browse list. The default value is **No** |
-| **Allow Guest**                         | If set to **Yes**, allows the share to be accessed without authentication (no password) by any user. The default value is **No** |
-| **Add Config File**                     | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default |
+| **Disk Quota Size**                     | Disk quota applied to the shared directory in the [Common](#common) and [Userfolder](#userfolder) share modes. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes ...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a disk quota previously applied to the share. The quota feature is currently only available for shared directories on **XFS** file systems. |
+| **Tolerance Quota Size**                | Size of the tolerance quota that will be temporarily allowed when the disk quota is reached. The tolerance quota is optional and can only be used during the period determined by the `qttltime` parameter in [cid.conf](#cid.conf). After this period, the shared directory will not be able to write any more files until the use of its disk space is reduced to a value lower than the one defined in the disk quota size. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a tolerance quota previously applied to the share. The quota feature is currently available only for directories shared on **XFS** file systems. |
+| **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the `disk quota` and `tolerance quota` (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder). |
+| **Hidden**                              | If set to **Yes**, hides the share of the list of available shares in the net view and browse list. The default value is **No**. |
+| **Allow Guest**                         | If set to **Yes**, allows the share to be accessed without authentication (no password) by any user. The default value is **No**. |
+| **Add Config File**                     | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
 
 The **Remove share** option displays the shares added by the tool and allows you to select them for deletion.  
 
@@ -257,11 +257,18 @@ This function provides the following support options of the program:
 >**Note:** The rows number of the log files can be adjusted by the `logsize` parameter in [cid.conf](#cid.conf) file.
 
 ### cid <a name="cid" />
-The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts.  
+The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts.
 
 >**Note:** Use `man cid` command to access the complete manual for that utility.  
 
 ### cid-change-pass and cid-change-pass-gtk <a name="ccp_ccp-gtk" />
+The `cid-change-pass` is a command line utility that allows domain users to change their passwords directly from the Linux computer joined to AD.  
+
+The command must be executed by the user himself who wants to change his password. It must inform the program of its **current password** and the **new password**. This may contain restrictions according to the domain's security policies.  
+
+If run as a superuser (**root**), the program should receive one or more domain user accounts as an argument. You will need to enter the current password for each of these users to perform the password change procedure.
+
+The `cid-change-pass-gtk` tool provides a simple and intuitive graphical interface to the _cid-change-pass_ utility.
 
 ### cid.conf <a name="cid.conf" />
 
