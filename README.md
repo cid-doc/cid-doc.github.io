@@ -26,6 +26,9 @@ CID
     	- [Unblock logon](#unblock)  
     	- [Manage domain accounts in local groups](#account)  
     	- [Manage shares](#shares)  
+    	      - [Common mode](#common)  
+    	      - [Userfolder mode](#userfolder)  
+    	      - [Printer mode](#printer)  
     	- [Help](#help)  
     - [cid](#cid)
     - [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
@@ -191,20 +194,41 @@ The **Add share** option displays a form where you must enter the arguments to c
 
 Three share modes are available:
 
-| Mode           | Description |
-| -------------- | ----------- |
-| **Common**     | Mode used by default if the argument is omitted. This mode allows share permissions to be managed locally through the `Rule` argument, or through a remote Windows system using the **Microsoft Management Console** (MMC) |
-| **Userfolder** | This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `path` argument must contain the path of the parent directory where the folders for each user share are to be created. If this argument is omitted, the `/home` directory will be assumed by default. If `disk quota` is used, it will be automatically applied to each user directory |
-| **Printer**    | Mode used to share a printer configured on the local _CUPS_ server through Samba (_SMB protocol_). This is optional or unnecessary when the `Share all printers on CUPS` option (see [Advanced mode](#advanced)) is enabled. In this mode, the `Path` field should be named after a printer configured in CUPS instead of a directory path. If left blank, this argument will receive the value used in the `Name` field or vice versa. When printer sharing is enabled, a special file share called **print$** will be configured to automatically provide shared printer drivers to Windows clients on the network. The location of the directory to be used for this share can be adjusted using the `prtdrvdir` parameter in the [cid.conf](#cid.conf) file. Driver files must be manually copied to this directory or you must use a Windows system utility to manage the drivers on that print server (visit this <a href="https://wiki.samba.org/index.php/ Setting_up_Automatic_Printer_Driver_Downloads_for_Windows_Clients">link</a> for more information) |
+##### Common mode <a name="common" />
+This mode allows you to share a directory on one of the local file systems via Samba (_SMB protocol_).  
+
+The directory path to be shared must be entered in the `Path` argument. If the directory path does not start with a forward slash (**/**) and you are using a `template` for the share, the parent directory of the template share is used as the parent directory for this share. If the directory does not exist, it will be created automatically.  
+
+The access permissions of the share can be managed locally through the `Rule` argument, or through a remote Windows system using the **Microsoft Management Console** (MMC).  
+
+When set locally, permissions are translated into extended POSIX ACLs and interpreted by Samba as Windows ACLs. They must be composed of 03 fields separated by colons (:) and have the format **[Type]:Account:[Permission]**, where:
+
+- The type is **u** for user or **g** for group;
+- Account is a domain user or group;
+- Permission is **r** for read-only, **f** for full access or **d** for access denied;
+
+Other important aspects about permissions are:
+
+- You can specify more than one permission at the same time, separating them with a semicolon (**;**).
+- Use a plus sign (**+**) at the beginning of the expression to append a new permission to the pre-existing permissions of the shared directory.
+- Use a minus sign (**-**) at the beginning of the expression to remove pre-existing permissions on the shared directory. In this case, the expression must contain only the type and name of the account (eg **-u:username**).
+- The **everyone** term can be used in the account field to represent all users.
+- If no permissions are specified when creating a share, all users will be given **read-only** permission.
+
+##### Userfolder mode <a name="userfolder" />
+This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `Path` argument must contain the path of the parent directory where the folders for each user share are to be created. If this argument is omitted, the `/home` directory will be assumed by default. If **disk quota** is used, it will be automatically applied to each user directory.
+
+##### Printer mode <a name="printer" />
+Mode used to share a printer configured on the local _CUPS_ server through Samba (_SMB protocol_). This is optional or unnecessary when the `Share all printers on CUPS` option (see [Advanced mode](#advanced)) is enabled. In this mode, the `Path` argument should be named after a printer configured in CUPS instead of a directory path. If left blank, this argument will receive the value used in the `Name` argument or vice versa. When printer sharing is enabled, a special file share called **print$** will be configured to automatically provide shared printer drivers to Windows clients on the network. The location of the directory to be used for this share can be adjusted using the `prtdrvdir` parameter in the [cid.conf](#cid.conf) file. Driver files must be manually copied to this directory or you must use a Windows system utility to manage the drivers on that print server (visit this <a href="https://wiki.samba.org/index.php/ Setting_up_Automatic_Printer_Driver_Downloads_for_Windows_Clients">link</a> for more information).  
 
 Here is the complete list of arguments for a share:
 
 | Argument                                | Description |
 | --------------------------------------- | ----------- |
-| **Mode**                                | Mode used by default if the argument is omitted. This mode allows share permissions to be managed locally through the `Rule` argument, or through a remote Windows system using the **Microsoft Management Console** (MMC) |
-| **Name**                                | This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `path` argument must contain the path of the parent directory where the folders for each user share are to be created. If this argument is omitted, the `/home` directory will be assumed by default. If `disk quota` is used, it will be automatically applied to each user directory |
-| **Template**                            | Mode used to share a printer configured on the local _CUPS_ server through Samba (_SMB protocol_). This is optional or unnecessary when the `Share all printers on CUPS` option (see [Advanced mode](#advanced)) is enabled. In this mode, the `Path` field should be named after a printer configured in CUPS instead of a directory path. If left blank, this argument will receive the value used in the `Name` field or vice versa. When printer sharing is enabled, a special file share called **print$** will be configured to automatically provide shared printer drivers to Windows clients on the network. The location of the directory to be used for this share can be adjusted using the `prtdrvdir` parameter in the [cid.conf](#cid.conf) file. Driver files must be manually copied to this directory or you must use a Windows system utility to manage the drivers on that print server (visit this <a href="https://wiki.samba.org/index.php/ Setting_up_Automatic_Printer_Driver_Downloads_for_Windows_Clients">link</a> for more information) |
-| **Path**                                |  |
+| **Mode**                                | Share mode. [Common mode](#common) is adopted if no selection is made |
+| **Name**                                | Name of a new share or share to be updated. In an update it is only necessary to fill in the fields that will be changed |
+| **Template**                            | Select a template for the share. The properties of the template will be copied to the share, except those that are specified. The Template argument can also be used to select a share to update, if the `Name` argument is left blank. [Userfolder mode](#userfolder) does not support this argument |
+| **Path**                                | Directory path or CUPS printer name |
 | **Rule**                                |  |
 | **Comment**                             |  |
 | **Disk Quota Size**                     |  |
@@ -218,7 +242,7 @@ Here is the complete list of arguments for a share:
 ### cid <a name="cid" />
 The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts.  
 
-Use `man cid` command to access the complete manual for that utility.  
+>**Note:** Use `man cid` command to access the complete manual for that utility.  
 
 ### cid-change-pass and cid-change-pass-gtk <a name="ccp_ccp-gtk" />
 
