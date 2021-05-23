@@ -19,16 +19,16 @@ CID
 - [Features](#Features)  
     - [cid-gtk](#cid-gtk)  
     	- [Join the domain](#join)  
-              --> [Advanced mode](#advanced)  
+              - - -> [Advanced mode](#advanced)  
     	- [Remove from domain](#leave)  
     	- [Change station behavior](#behavior)  
     	- [Block logon](#block)  
     	- [Unblock logon](#unblock)  
     	- [Manage domain accounts in local groups](#account)  
     	- [Manage shares](#shares)  
-              --> [Common mode](#common)  
-              --> [Userfolder mode](#userfolder)  
-              --> [Printer mode](#printer)  
+              - - -> [Common mode](#common)  
+              - - -> [Userfolder mode](#userfolder)  
+              - - -> [Printer mode](#printer)  
     	- [Help](#help)  
     - [cid](#cid)
     - [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
@@ -300,6 +300,23 @@ Basically the process consists of mounting the Netlogon on local file system, an
 If `logon scripts` option is enabled (see [Advanced mode](#advanced)), during the system [joining the domain](#join), if it does not already exist, the CID tries to export to Netlogon a default copy of the **scripts_cid** directory using the credentials of the domain administrator user used to the join. This copy is provided with the program's source package and is installed in the `/usr/share/cid/templates` directory. This directory contains two bash scripts ([logon.sh and logon_root.sh](#logon_lroot.sh)) and the [shares.xml](#map_shares) file. See the details about these files in the next subsections!
 
 ### logon.sh and logon_root.sh <a name="logon_lroot.sh" />
+The **logon_root.sh** is the bash script executed with the **root user UID**, which grants privileges for the execution of routines that require the powers of the superuser. It is executed **before** logon.sh.  
+
+The **logon.sh** is the bash script executed with the UID of the user who is logging in and can be used to execute routines that do not require elevated privileges. It is executed **after** logon_root.sh.  
+
+In both scripts, in addition to the known bash variables, you can use the following environment variables exported by the CID:
+
+| Variable        | Description |
+| --------------- | ----------- |
+| **NETLOGON**    | Mount point of the Netlogon share on the system. |
+| **USERNAME**    | Name of the user that are opening session. |
+| **USERID**      | ID of the user that are opening session. |
+| **USERDOMAIN**  | Domain name of the user that is opening session. |
+| **USERPROFILE** | Home directory path of the user that is opening session. |
+| **USERSHELL**   | Login shell of the user that is opening session. |
+| **GROUPID**     | Primary group ID of the user that is opening session. |
+| **USERGROUP**   | Primary group name of the user that is opening session. |
+| **USERGROUPS**  | Group list separated by commas (**,**) of the user that is opening session. |
 
 ### Automatic mapping of file shares <a name="map_shares" />
 
