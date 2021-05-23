@@ -348,6 +348,8 @@ Due to a limitation inherited from the NetBIOS API, hostnames cannot contain mor
 ### Graphic Mode Login Managers <a name="Login" />
 In certain Linux distributions, some login managers in their default configuration do not list users who are in a remote source and/or do not have options so that the credentials of those users can be informed through a prompt or text box. In such cases you should consult the manual of your distribution or of the login manager in question to see if these options are available and what settings should be made. If necessary, install a new graphical login manager.
 
+<br>
+
 >Release 1.1.2 2021-05-15  
 >
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
