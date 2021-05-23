@@ -154,7 +154,7 @@ The options available in this mode are:
 | **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the **idmap_ad** backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the **idmap_autorid** backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default |
 | **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option |
 | **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab |
-| **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The CID will filter the contents of this file so that there are no conflict with the defined parameters by default |
+| **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default |
 
 #### Remove from domain <a name="leave" />
 This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
@@ -229,13 +229,20 @@ Here is the complete list of arguments for a share:
 | **Name**                                | Name of a new share or share to be updated. In an update it is only necessary to fill in the fields that will be changed |
 | **Template**                            | Select a template for the share. The properties of the template will be copied to the share, except those that are specified. The Template argument can also be used to select a share to update, if the `Name` argument is left blank. [Userfolder mode](#userfolder) does not support this argument |
 | **Path**                                | Directory path or CUPS printer name |
-| **Rule**                                |  |
-| **Comment**                             |  |
-| **Disk Quota Size**                     |  |
-| **Tolerance Quota Size**                |  |
-| **Apply Quota to Fst-level of Subdirs** |  |
-| **Allow Guest**                         |  |
-| **Add Config File**                     |  |
+| **Rule**                                | Use this argument to manage share permissions in [Common mode](#common) |
+| **Comment**                             | Provides a description for the share. This is optional |
+| **Disk Quota Size**                     | Disk quota applied to the shared directory in the [Common](#common) and [Userfolder](#userfolder) share modes. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an integer to indicate a unit (kilobytes, megabytes, gigabytes ...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a disk quota previously applied to the share. The quota feature is currently only available for shared directories on **XFS** file systems |
+| **Tolerance Quota Size**                | Size of the tolerance quota that will be temporarily allowed when the disk quota is reached. The tolerance quota is optional and can only be used during the period determined by the qttltime parameter in cid.conf. After this period, the shared directory will not be able to write any more files until the use of its disk space is reduced to a value lower than the one defined in the disk quota size. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an integer to indicate a unit (kilobytes, megabytes, gigabytes...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a tolerance quota previously applied to the share. The quota feature is currently available only for directories shared on **XFS** file systems |
+| **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the disk quota and tolerance quota (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder) |
+| **Hidden**                              | If set to **Yes**, hides the share of the list of available shares in the net view and browse list. The default value is **No** |
+| **Allow Guest**                         | If set to **Yes**, allows the share to be accessed without authentication (no password) by any user. The default value is **No** |
+| **Add Config File**                     | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default |
+
+The **Remove share** option displays the shares added by the tool and allows you to select them for deletion.  
+
+When you delete a share from [Common mode](#common), _Extended POSIX ACLs_ are reset recursively on the file system. The user directories created by the [Userfolder](#userfolder) share mode, on the other hand, will not have their properties changed.  
+
+When you delete a share of the [Printer mode](#printer), only the configuration in Samba is removed. The configuration of the printer on the CUPS server is not affected.
 
 #### Help <a name="help" />
 
