@@ -117,10 +117,10 @@ In *Ubuntu* and its derivations it is possible to install the CID through packag
 ## Features <a name="Features" />
 The CID consists of four main executables subdivided into two graphical tools (`cid-gtk` and `cid-change-pass-gtk`) and two command line utilities (`cid` and `cid-change-pass`). Both pairs contain equivalent features and they all accept the following general options as a argument in the command line:  
 
-| Options           | Description               |
-| ----------------- | ------------------------- |
-| **-v, --version** | Show the version and exit |
-| **-h, --help**    | Show the help and exit    |
+| Options           | Description                |
+| ----------------- | -------------------------- |
+| **-v, --version** | Show the version and exit. |
+| **-h, --help**    | Show the help and exit.    |
 
 ### cid-gtk <a name="cid-gtk" />
 The **cid-gtk** (_GUI_) is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system, within this context.  
@@ -132,11 +132,11 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 
 | Field                   | Description |
 | ----------------------- | ----------- |
-| **Domain**              | Domain name (FQDN) |
-| **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers) |
-| **User**                | Domain administrator user |
-| **Password**            | User password |
-| **Mode**                | Select one of two join modes: **Default** or **Advanced**. _Default_ mode is adopted if no selection is made. [Advanced mode](#advanced) opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode |
+| **Domain**              | Domain name (FQDN). |
+| **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers). |
+| **User**                | Domain administrator user. |
+| **Password**            | User password. |
+| **Mode**                | Select one of two join modes: **Default** or **Advanced**. _Default_ mode is adopted if no selection is made. [Advanced mode](#advanced) opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode. |
 
 >**Note:** Before modifying the system files, the CID makes a backup of these files in the `/var/lib/cid/backups/ori` directory.
 
@@ -145,16 +145,16 @@ The options available in this mode are:
 
 | Option                                  | Description |
 | --------------------------------------- | ----------- |
-| **Disable NetBIOS over TCP/IP**         | Disables support for the NetBIOS API implemented by Samba |
-| **Disable authentication via Kerberos** | This causes the pam_winbind module to not attempt to obtain the kerberos tickets known as Ticket Granting Tickets (TGTs) of the Authentication Server (AS) during user login |
-| **Disable credential caching**          | Disables Samba support for off-line authentication, or authentication with local cached credentials. This requires real-time communication with the authentication server for the logins the domain users |
-| **Disable logon scripts**               | This disables [logon scripts](#Logon_scripts) |
-| **Do not use domain as default**        | Configures Samba not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument |
-| **Enable authentication for "sudo"**    | This requires that domain users who are given administrative privileges on the Linux computer need to authenticate when running the `sudo` command (see [Manage domain accounts in local groups](#account)) |
-| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the **idmap_ad** backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the **idmap_autorid** backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default |
-| **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option |
-| **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab |
-| **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default |
+| **Disable NetBIOS over TCP/IP**         | Disables support for the NetBIOS API implemented by Samba. |
+| **Disable authentication via Kerberos** | This causes the pam_winbind module to not attempt to obtain the kerberos tickets known as Ticket Granting Tickets (TGTs) of the Authentication Server (AS) during user login. |
+| **Disable credential caching**          | Disables Samba support for off-line authentication, or authentication with local cached credentials. This requires real-time communication with the authentication server for the logins the domain users. |
+| **Disable logon scripts**               | This disables [logon scripts](#Logon_scripts). |
+| **Do not use domain as default**        | Configures Samba not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument. |
+| **Enable authentication for "sudo"**    | This requires that domain users who are given administrative privileges on the Linux computer need to authenticate when running the `sudo` command (see [Manage domain accounts in local groups](#account)). |
+| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the **idmap_ad** backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the **idmap_autorid** backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default. |
+| **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option. |
+| **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab. |
+| **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
 
 #### Remove from domain <a name="leave" />
 This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
@@ -230,7 +230,7 @@ Here is the complete list of arguments for a share:
 | **Template**                            | Select a template for the share. The properties of the template will be copied to the share, except those that are specified. The Template argument can also be used to select a share to update, if the `Name` argument is left blank. [Userfolder mode](#userfolder) does not support this argument. |
 | **Path**                                | Directory path or CUPS printer name. |
 | **Rule**                                | Use this argument to manage share permissions in [Common mode](#common). |
-| **Comment**                             | Provides a description for the share. This is optional |
+| **Comment**                             | Provides a description for the share. This is optional. |
 | **Disk Quota Size**                     | Disk quota applied to the shared directory in the [Common](#common) and [Userfolder](#userfolder) share modes. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes ...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a disk quota previously applied to the share. The quota feature is currently only available for shared directories on **XFS** file systems. |
 | **Tolerance Quota Size**                | Size of the tolerance quota that will be temporarily allowed when the disk quota is reached. The tolerance quota is optional and can only be used during the period determined by the `qttltime` parameter in [cid.conf](#cid.conf). After this period, the shared directory will not be able to write any more files until the use of its disk space is reduced to a value lower than the one defined in the disk quota size. Use the letter **k**, **m**, **g**, **t**, **p**, **e**, **z** or **y** after an **integer** to indicate a unit (kilobytes, megabytes, gigabytes...). If the unit is omitted, **k (kilobytes)** is adopted by default. Use the **zero (0)** number in this field to remove a tolerance quota previously applied to the share. The quota feature is currently available only for directories shared on **XFS** file systems. |
 | **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the `disk quota` and `tolerance quota` (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder). |
@@ -268,12 +268,29 @@ The command must be executed by the user himself who wants to change his passwor
 
 If run as a superuser (**root**), the program should receive one or more domain user accounts as an argument. You will need to enter the current password for each of these users to perform the password change procedure.
 
-The `cid-change-pass-gtk` tool provides a simple and intuitive graphical interface to the _cid-change-pass_ utility.
+The `cid-change-pass-gtk` tool provides a simple and intuitive graphical interface to the `cid-change-pass` utility.
 
 ### cid.conf <a name="cid.conf" />
+The **cid.conf** is a configuration file installed in the `/etc/cid` directory which allows you to adjust the values of the variables used in the CID scripts adapting its operation to the Linux environment to which it was installed.  
+
+The parameters in this file are declared as bash variables in the following format:
+
+	parameter=value
+
+Note that there should be no spaces between the **equal sign (=)** that separates the parameter from its corresponding value. Some parameters admit more than one value, and in these cases, the values must be separated by a **single space**, but between **single quotes (')** or **double quotes (")**, which are mandatory if _environment variables_ are used in the value of a parameter.
+
+Lines that start with a **hashtag (#)** are just comments and are not interpreted by the program. The file of the original package contains all accepted parameters accompanied by comments that describe them widely. You can access a copy of this file at this <a href="https://sourceforge.net/projects/c-i-d/files/docs/cid.conf">link</a>.
+
+>**Note:** Modifications made to the file after the system has already been joined to a domain will only be applied if you reload the [CID Init Script](#CIS) with the command: `systemctl reload cid`.
 
 ### CID Init Script <a name="CIS" />
+The **CID Init Script** is a _Unit file_ for _Systemd_ generated when the computer joins the domain and is responsible for maintaining the settings made by the CID in the system files, and also for making other adjustments during startup, such as forcing time synchronization with the domain controllers and update the `/etc/hosts` file (useful in DHCP-based networks).  
 
+You can manually force reconfiguration of files modified by the CID using the command: `systemctl reload cid`. This will also cause the changes made to the [cid.conf](#cid.conf) file after the system joins the domain to be applied.  
+
+The CID Init Script is a unit file of the _oneshot_ type and does not keep active processes as a common service after the system initialization.
+
+>**Note:** When removing the computer from the domain the CID Init Script is also removed from the system.
 
 ## Logon scripts <a name="Logon_scripts" />
 
