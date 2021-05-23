@@ -39,7 +39,8 @@ CID
     - [Automatic mapping of file shares](#map_shares)
     - [Automatic mapping of shared printers](#map_printers)  
 - [Troubleshooting](#Troubleshooting)
-
+    - [Hostname longer than 15 characters](#Hostname)
+    - [Graphic Mode Login Managers](#Login)
 
 ## Description <a name="Description" />
 **CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in **Active Directory** domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.  
@@ -328,11 +329,24 @@ Usually the file systems to be mounted are defined in the pam_mount configuratio
 The default shares.xml file contains some examples for defining the mounting of common SMB shares. See the pam_mount <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">documentation</a> for more information on its configuration.
 
 ### Automatic mapping of shared printers <a name="map_printers" />
+The basis for automating the mapping of shared printers is to use the `lpadmin` command within [logon scripts](#Logon_scripts).  
 
+The **lpadmin** is a command-line utility that configures printers or print classes for the **CUPS**, which is currently one of the most commonly used print systems in Linux distributions. With it you can easily add, remove, or even set a printer as default on the Linux system.
+
+Generally, management of system printers through lpadmin is only allowed to the root user or users who are members of a specific group used by CUPS, whose name may vary from one Linux distribution to another. Because of this, setting a printer mapping for a user account that is not in the local CUPS administration group can only be done in the [logon_root.sh](#logon_lroot.sh) script.
+
+##### Example:
+	# Mapping printer-01 to the administrator user:
+	[[ "$USERNAME" == "administrator" ]] && lpadmin -p printer-01 -E -v ipp://printserver/ipp/printer-01 -m everywhere
 
 ## Troubleshooting <a name="Troubleshooting" />
+This section describes known cases related to the program.
 
+### Hostname longer than 15 characters <a name="Hostname" />
+Due to a limitation inherited from the NetBIOS API, hostnames cannot contain more than 15 characters (more information <a href="https://support.microsoft.com/en-us/kb/909264">here</a>). If necessary, adjust the hostname of the Linux computer before attempting to join the domain.
 
+### Graphic Mode Login Managers <a name="Login" />
+In certain Linux distributions, some login managers in their default configuration do not list users who are in a remote source and/or do not have options so that the credentials of those users can be informed through a prompt or text box. In such cases you should consult the manual of your distribution or of the login manager in question to see if these options are available and what settings should be made. If necessary, install a new graphical login manager.
 
 >Release 1.1.2 2021-05-15  
 >
