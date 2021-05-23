@@ -319,6 +319,13 @@ In both scripts, in addition to the known bash variables, you can use the follow
 | **USERGROUPS**  | Group list separated by commas (**,**) of the user that is opening session. |
 
 ### Automatic mapping of file shares <a name="map_shares" />
+The automatic mapping of file shares during user login is performed through the **pam_mount** module.  
+
+_Pam_mount_ is a library that allows mounting the file system transparently through _PAM_ authentication.  
+
+Usually the file systems to be mounted are defined in the pam_mount configuration file (usually in `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of that file stored on Netlogon, and is used to replace the configuration file of pam_mount on the local system of Linux computers entered into the domain when users log on to them. In this way, all volume definitions to be mounted are centralized in this single file and can be applied to all users or computers in the domain.  
+
+The default shares.xml file contains some examples for defining the mounting of common SMB shares. See the pam_mount <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">documentation</a> for more information on its configuration.
 
 ### Automatic mapping of shared printers <a name="map_printers" />
 
