@@ -293,6 +293,11 @@ The CID Init Script is a unit file of the _oneshot_ type and does not keep activ
 >**Note:** When removing the computer from the domain the CID Init Script is also removed from the system.
 
 ## Logon scripts <a name="Logon_scripts" />
+The CID can configure the Linux system to allow bash scripts stored in the **Netlogon** share to be executed when the domain users will made logon.  
+
+Basically the process consists of mounting the Netlogon on local file system, and then executed the scripts in the system shell. In the end, Netlogon is unmounted from the file system again. All of this is done automatically and transparently to the user.
+
+If `logon scripts` option is enabled (see [Advanced mode](#advanced)), during the system [joining the domain](#join), if it does not already exist, the CID tries to export to Netlogon a default copy of the **scripts_cid** directory using the credentials of the domain administrator user used to the join. This copy is provided with the program's source package and is installed in the `/usr/share/cid/templates` directory. This directory contains two bash scripts ([logon.sh and logon_root.sh](#logon_lroot.sh)) and the [shares.xml](#map_shares) file. See the details about these files in the next subsections!
 
 ### logon.sh and logon_root.sh <a name="logon_lroot.sh" />
 
