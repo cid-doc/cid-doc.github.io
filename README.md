@@ -201,7 +201,7 @@ The directory path to be shared must be entered in the `Path` argument. If the d
 
 The access permissions of the share can be managed locally through the `Rule` argument, or through a remote Windows system using the **Microsoft Management Console** (MMC).  
 
-When set locally, permissions are translated into extended POSIX ACLs and interpreted by Samba as Windows ACLs. They must be composed of 03 fields separated by colons (:) and have the format **[Type]:Account:[Permission]**, where:
+When set locally, permissions are translated into extended _POSIX ACLs_ and interpreted by Samba as _Windows ACLs_. They must be composed of 03 fields separated by colons (:) and have the format **[Type]:Account:[Permission]**, where:
 
 - The type is **u** for user or **g** for group;
 - Account is a domain user or group;
