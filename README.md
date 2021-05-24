@@ -3,7 +3,7 @@ CID
 
 **License: [GPL-3+](https://sourceforge.net/projects/c-i-d/files/COPYING)**  
 
-[Homepage](https://c-i-d.sourceforge.io) | [Discussion](https://sourceforge.net/p/c-i-d/discussion/) | [Donations](https://sourceforge.net/p/c-i-d/donate)  
+[Homepage](https://c-i-d.sourceforge.io) | [Discussion](https://sourceforge.net/p/c-i-d/discussion/) | [Donations](https://sourceforge.net/p/c-i-d/donate) | [Changelog](https://sourceforge.net/projects/c-i-d/files/docs/CHANGELOG)  
 
 
 ## Contents
