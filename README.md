@@ -176,7 +176,9 @@ This function restricts logon in the system to a specific user or group of the d
 This function removes the logon restriction applied by the [block logon](#block) function.
 
 #### Manage domain accounts in local groups <a name="account" />
-This function allows you to associate domain user accounts with groups of the local system so that they can perform specific routines that require the administrative privileges of these groups.  
+This function allows you to associate domain user accounts with groups on the local system so that they can perform specific routines that require the administrative privileges of those groups, and it also allows them to execute the `sudo` command.  
+
+Authentication for the sudo command can be enabled or disabled via the `Enable authentication for "sudo"` option in [advanced join mode](#advanced) or in [Change station behavior](#behavior).  
  
 The CID uses the groups that the **default user** (usually the first user created on the system) belongs to to determine these groups. You can specify any other user using the `defaultuserid` parameter, and you can also add other specific groups using the `localgroups` parameter in the [cid.conf](#cid.conf) file.  
 
