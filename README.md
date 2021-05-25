@@ -155,7 +155,7 @@ The options available in this mode are:
 | **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the **idmap_ad** backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the **idmap_autorid** backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default. |
 | **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option. |
 | **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab. |
-| **Add config file to "Samba"**          | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
+| **Add config file to "Samba"**          | It allows adding a file containing parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
 
 #### Remove from domain <a name="leave" />
 This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
@@ -176,7 +176,7 @@ This function restricts logon in the system to a specific user or group of the d
 This function removes the logon restriction applied by the [block logon](#block) function.
 
 #### Manage domain accounts in local groups <a name="account" />
-This function allows you to associate domain user accounts with local system groups so that they can perform specific tasks or routines that require administrative privileges.  
+This function allows you to associate domain user accounts with groups of the local system so that they can perform specific routines that require the administrative privileges of these groups.  
  
 The CID uses the groups that the **default user** (usually the first user created on the system) belongs to to determine these groups. You can specify any other user using the `defaultuserid` parameter, and you can also add other specific groups using the `localgroups` parameter in the [cid.conf](#cid.conf) file.  
 
@@ -237,7 +237,7 @@ Here is the complete list of arguments for a share:
 | **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the `disk quota` and `tolerance quota` (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder). |
 | **Hidden**                              | If set to **Yes**, hides the share of the list of available shares in the net view and browse list. The default value is **No**. |
 | **Allow Guest**                         | If set to **Yes**, allows the share to be accessed without authentication (no password) by any user. The default value is **No**. |
-| **Add Config File**                     | It allows adding a file containing configuration parameters to be attached to the settings made by the CID in the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
+| **Add Config File**                     | It allows adding a file containing parameters to be attached to the settings made by the CID in the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
 
 The **Remove share** option displays the shares added by the tool and allows you to select them for deletion.  
 
