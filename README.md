@@ -322,23 +322,34 @@ In both scripts, in addition to the known bash variables, you can use the follow
 | **USERGROUPS**  | Group list separated by commas (**,**) of the user that is opening session. |
 
 ### Automatic mapping of file shares <a name="map_shares" />
-The automatic mapping of file shares during user login is performed through the **pam_mount** module.  
+The automatic mapping of file shares during users logon can be performed through the **pam_mount** module.  
 
-_Pam_mount_ is a library that allows mounting the file system transparently through _PAM_ authentication.  
+<a href="http://pam-mount.sourceforge.net/">Pam_mount</a> is a library that allows you to mount a file system transparently through PAM authentication. In general, the file systems to be mounted are defined in your global configuration file (usually stored in `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of this file stored on Netlogon, which replaces the original configuration file on Linux computers of the domain during users logon. In this way, all configuration can be centralized in this single file to be applied to all theses computers.  
 
-Usually the file systems to be mounted are defined in the pam_mount configuration file (usually in `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of that file stored on Netlogon, and is used to replace the configuration file of pam_mount on the local system of Linux computers entered into the domain when users log on to them. In this way, all volume definitions to be mounted are centralized in this single file and can be applied to all users or computers in the domain.  
+The file systems to be mounted are defined in `<volume ...>` tags. The default shares.xml file contains some examples of defining common SMB shares, such as:
 
-The default shares.xml file contains some examples for defining the mounting of common SMB shares. See the pam_mount <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">documentation</a> for more information on its configuration.
+	<!-- Mapping a public share (full access to everyone) -->
+	<volume fstype="cifs" server="fileserver" path="PUBLIC" mountpoint="~/PUBLIC" />
+
+	<!-- Mapping the user folder (a "homes" section created by CID on Samba) -->
+	<volume fstype="cifs" server="fileserver" path="%(USER)" mountpoint="~/MyNetFolder" />
+
+	<!-- Conditional mapping to the ITD group domain -->
+	<volume sgrp="itd" fstype="cifs" server="fileserver" path="ITD$" mountpoint="~/ITD" />
+
+	<!-- Conditional mapping to a ITD group of other trusted domain -->
+	<volume sgrp="SAMPLE\itd" fstype="cifs" server="fileserver" path="ITD$" mountpoint="~/ITD" options="domain=SAMPLE" />
+
+See the <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">pam_mount documentation</a> for more information on its configuration.
 
 ### Automatic mapping of shared printers <a name="map_printers" />
-The basis for automating the mapping of shared printers is to use the `lpadmin` command within [logon scripts](#Logon_scripts).  
+The basis for automating the mapping of printers is to use the **lpadmin** command in the [logon scripts](#Logon_scripts).  
 
-The **lpadmin** is a command-line utility that configures printers or print classes for the **CUPS**, which is currently one of the most commonly used print systems in Linux distributions. With it you can easily add, remove, or even set a printer as default on the Linux system.
+<a href="https://man7.org/linux/man-pages/man8/lpadmin.8.html">Lpadmin</a> is a command line utility that configures printers or print classes for _CUPS_. With it, you can easily add, remove or even set a printer as a default on the Linux system.  
 
-Generally, management of system printers through lpadmin is only allowed to the root user or users who are members of a specific group used by CUPS, whose name may vary from one Linux distribution to another. Because of this, setting a printer mapping for a user account that is not in the local CUPS administration group can only be done in the [logon_root.sh](#logon_lroot.sh) script.
+Generally, printer management is only allowed for the root user or users who are members of the CUPS management group, whose name may vary from one Linux distribution to another. For this reason, settings for automatic mapping should normally be made in the [logon_root.sh](#logon_lroot.sh) script.
 
-##### Example:
-	# Mapping printer-01 to the administrator user:
+	# Eg: Mapping printer-01 only to the administrator user
 	[[ "$USERNAME" == "administrator" ]] && lpadmin -p printer-01 -E -v ipp://printserver/ipp/printer-01 -m everywhere
 
 ## Troubleshooting <a name="Troubleshooting" />
