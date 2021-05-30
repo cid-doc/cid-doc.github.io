@@ -229,8 +229,8 @@ Some examples:
 ###### Removing permissions for the Guest user account
 	-u:guest
 
-###### Allowing full access to all users
-	u:everyone:f
+###### Allowing full access to all users and denying access to the Guests group
+	u:everyone:f;g:guests:d
 
 ##### Userfolder mode <a name="userfolder" />
 This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `Path` argument must contain the path of the parent directory where the diretories for each user are to be created. If this argument is omitted, the `/home` directory will be assumed by default. If **disk quota** is used, it will be automatically applied to each user directory.
