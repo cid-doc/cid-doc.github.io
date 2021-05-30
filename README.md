@@ -218,6 +218,20 @@ Other important aspects about permissions are:
 - The `everyone` term can be used in the **Account** field to represent **all users**.
 - If no permissions are specified when creating a share, all users will be given **read-only** permission.
 
+Some examples:
+
+###### Allowing full access to the Domain Users group
+	g:domain users:f
+
+###### Adding read-only permission to the Guest user account
+	+u:guest:r
+
+###### Removing permissions for the Guest user account
+	-u:guest
+
+###### Allowing full access to all users
+	u:everyone:f
+
 ##### Userfolder mode <a name="userfolder" />
 This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `Path` argument must contain the path of the parent directory where the diretories for each user are to be created. If this argument is omitted, the `/home` directory will be assumed by default. If **disk quota** is used, it will be automatically applied to each user directory.
 
