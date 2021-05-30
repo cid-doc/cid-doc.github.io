@@ -108,7 +108,7 @@ After installing the requirements, download the tarball, unzip it and run as **r
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
 
 ### Ubuntu and derivatives <a name="Ubuntu" />
-In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the [requirements](#Requirements) marked as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the [requirements](#Requirements) as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
 
     # add-apt-repository ppa:emoraes25/cid
     # apt update
@@ -124,7 +124,7 @@ The CID consists of four main executables subdivided into two graphical tools (`
 | **-h, --help**    | Show the help and exit.    |
 
 ### cid-gtk <a name="cid-gtk" />
-The **cid-gtk** (_GUI_) is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system, within this context.  
+The **cid-gtk** (_GUI_) is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system.  
 
 The available features are described in the following sections.
 
@@ -134,10 +134,10 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 | Field                   | Description |
 | ----------------------- | ----------- |
 | **Domain**              | Domain name (FQDN). |
-| **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers). |
+| **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account will must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers). |
 | **User**                | Domain administrator user. |
 | **Password**            | User password. |
-| **Mode**                | Select one of two join modes: **Default** or **Advanced**. _Default_ mode is adopted if no selection is made. [Advanced mode](#advanced) opens a form that allows you to customize the settings and modifications that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode. |
+| **Mode**                | Select one of two join modes: **Default** or **Advanced**. _Default_ mode is adopted if no selection is made. [Advanced mode](#advanced) opens a form that allows you to customize the settings that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode. |
 
 >**Note:** Before modifying the system files, the CID makes a backup of these files in the `/var/lib/cid/backups/ori` directory.
 
@@ -147,15 +147,15 @@ The options available in this mode are:
 | Option                                  | Description |
 | --------------------------------------- | ----------- |
 | **Disable NetBIOS over TCP/IP**         | Disables support for the NetBIOS API implemented by Samba. |
-| **Disable authentication via Kerberos** | This causes the pam_winbind module to not attempt to obtain the kerberos tickets known as Ticket Granting Tickets (TGTs) of the Authentication Server (AS) during user login. |
-| **Disable credential caching**          | Disables Samba support for off-line authentication, or authentication with local cached credentials. This requires real-time communication with the authentication server for the logins the domain users. |
+| **Disable authentication via Kerberos** | This causes the <a href="https://www.samba.org/samba/docs/current/man-html/pam_winbind.8.html">pam_winbind</a> module to not attempt to obtain the <a href="https://web.mit.edu/kerberos">kerberos</a> tickets known as Ticket Granting Tickets (TGTs) of the Authentication Server (AS) during user login. |
+| **Disable credential caching**          | Disables support for off-line authentication, or authentication with local cached credentials. This requires real-time communication with the authentication server for the logins the domain users. |
 | **Disable logon scripts**               | This disables [logon scripts](#Logon_scripts). |
-| **Do not use domain as default**        | Configures Samba not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument. |
+| **Do not use domain as default**        | Configures <a href="https://www.samba.org/samba/docs/current/man-html/winbindd.8.html">winbind</a> not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument. |
 | **Enable authentication for "sudo"**    | This requires that domain users who are given administrative privileges on the Linux computer need to authenticate when running the `sudo` command (see [Manage domain accounts in local groups](#account)). |
-| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the **idmap_ad** backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the **idmap_autorid** backend, which establishes these attributes through a predefined configuration on the local system. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined Samba configuration with the `template` option. The **template** option is adopted by default. |
-| **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local **CUPS** server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option. |
-| **Use keytab file method**              | Configures Samba to use a dedicated keytab file as an authentication method for Kerberos. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab. |
-| **Add config file to "Samba"**          | It allows adding a file containing parameters to be attached to the settings made by the CID in the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
+| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the <a href="https://www.samba.org/samba/docs/current/man-html/idmap_ad.8.html">idmap_ad</a> backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the <a href="https://www.samba.org/samba/docs/current/man-html/idmap_autorid.8.html">idmap_autorid</a> backend, which establishes these attributes through a predefined configuration on the local system. You can use the `id_range_size`, `max_num_domains`, `wbd_userprofile` and `wbd_usershell` parameters in [cid.conf](#cid.conf) to customize these settings. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined configuration with the `template` option. The **template** option is adopted by default. |
+| **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local <a href="http://www.cups.org/">CUPS</a> server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option. |
+| **Use keytab file method**              | Configures Samba to use a dedicated <a href="http://web.mit.edu/kerberos/krb5-1.14/doc/basic/keytab_def.html">keytab</a> file as an <a href="https://web.mit.edu/kerberos">kerberos</a> authentication method. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab. |
+| **Add config file to "Samba"**          | It allows adding a file containing parameters to be attached to the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by default. |
 
 #### Remove from domain <a name="leave" />
 This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
@@ -176,7 +176,7 @@ This function restricts logon in the system to a specific user or group of the d
 This function removes the logon restriction applied by the [block logon](#block) function.
 
 #### Manage domain accounts in local groups <a name="account" />
-This function allows you to associate domain user accounts with groups on the local system so that they can perform specific routines that require the administrative privileges of those groups, and it also allows them to execute the `sudo` command.  
+This function allows you to associate domain user accounts with groups on the local system so that they can perform specific routines that require the administrative privileges of those groups, in addition to allowing them to run the `sudo` command.  
 
 Authentication for the sudo command can be enabled or disabled via the `Enable authentication for "sudo"` option in [advanced join mode](#advanced) or in [Change station behavior](#behavior).  
  
