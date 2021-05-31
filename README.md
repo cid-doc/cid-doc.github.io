@@ -338,7 +338,7 @@ In both scripts, in addition to the known bash variables, you can use the follow
 ### Automatic mapping of file shares <a name="map_shares" />
 The automatic mapping of file shares during users logon can be performed through the **pam_mount** module.  
 
-<a href="http://pam-mount.sourceforge.net/">Pam_mount</a> is a library that allows you to mount a file system transparently through PAM authentication. In general, the file systems to be mounted are defined in your global configuration file (usually stored in `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of this file stored on Netlogon, which replaces the original configuration file on Linux computers of the domain during users logon. In this way, all configuration can be centralized in this single file to be applied to all theses computers.  
+<a href="http://pam-mount.sourceforge.net/">Pam_mount</a> is a library that allows you to mount a file system transparently through PAM authentication. In general, the file systems to be mounted are defined in your global configuration file (usually `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of this file stored on Netlogon, which replaces the original configuration file on Linux computers of the domain during users logon. In this way, all configuration can be centralized in this single file to be applied to all theses computers.  
 
 The file systems to be mounted are defined in `<volume ...>` tags. The default shares.xml file contains some examples of defining common SMB shares, such as:
 
