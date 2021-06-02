@@ -188,7 +188,7 @@ Note that on Unix systems there is no group nesting. Therefore, when a group acc
 
 The **Remove account** option lists domain accounts added to local groups and allows you to select them for removal.
 
->**Note:** Members of the **domain admins** group are already associated with local groups by default.
+>**Note:** Members of the **Domain Admins** group are automatically associated with local groups.
 
 #### Manage shares <a name="shares" />
 This function allows you to manage _Samba_ shares intuitively.  
