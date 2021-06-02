@@ -139,23 +139,23 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 | **Password**            | User password. |
 | **Mode**                | Select one of two join modes: **Default** or **Advanced**. _Default_ mode is adopted if no selection is made. [Advanced mode](#advanced) opens a form that allows you to customize the settings that the CID will perform on the system during the process of joining the domain. All configuration options available in this mode are directly opposite to the settings adopted in the Default mode. |
 
->**Note:** Before modifying the system files, the CID makes a backup of these files in the `/var/lib/cid/backups/ori` directory.
+>**Note:** Before modifying the system files, the CID makes a backup in the `/var/lib/cid/backups/ori` directory.
 
 ##### Advanced mode <a name="advanced" />
 The options available in this mode are:
 
 | Option                                  | Description |
 | --------------------------------------- | ----------- |
-| **Disable NetBIOS over TCP/IP**         | Disables support for the NetBIOS API implemented by Samba. |
+| **Disable NetBIOS over TCP/IP**         | Disables support for the <a href="https://en.wikipedia.org/wiki/NetBIOS">NetBIOS API</a> implemented by Samba. |
 | **Disable authentication via Kerberos** | This causes the <a href="https://www.samba.org/samba/docs/current/man-html/pam_winbind.8.html">pam_winbind</a> module to not attempt to obtain the <a href="https://web.mit.edu/kerberos">kerberos</a> tickets known as Ticket Granting Tickets (TGTs) of the Authentication Server (AS) during user login. |
 | **Disable credential caching**          | Disables support for off-line authentication, or authentication with local cached credentials. This requires real-time communication with the authentication server for the logins the domain users. |
 | **Disable logon scripts**               | This disables [logon scripts](#Logon_scripts). |
 | **Do not use domain as default**        | Configures <a href="https://www.samba.org/samba/docs/current/man-html/winbindd.8.html">winbind</a> not to use the joined domain as the system default. This makes it necessary to specify the domain name before the user or group name (format: `DOMAIN\user` or `DOMAIN\group`), both in authentication and in system commands that receive user or group names as argument. |
 | **Enable authentication for "sudo"**    | This requires that domain users who are given administrative privileges on the Linux computer need to authenticate when running the `sudo` command (see [Manage domain accounts in local groups](#account)). |
-| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the <a href="https://www.samba.org/samba/docs/current/man-html/idmap_ad.8.html">idmap_ad</a> backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the <a href="https://www.samba.org/samba/docs/current/man-html/idmap_autorid.8.html">idmap_autorid</a> backend, which establishes these attributes through a predefined configuration on the local system. You can use the `id_range_size`, `max_num_domains`, `wbd_userprofile` and `wbd_usershell` parameters in [cid.conf](#cid.conf) to customize these settings. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of UIDs and GIDs that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups<br /><br />- **Final ID:** End value of the range of UIDs and GIDs that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field<br /><br />- **winbind nss info:** This defines whether information about the home directory and the shell of domain users should also be obtained from DC with the `rfc2307` option, or whether through a predefined configuration with the `template` option. The **template** option is adopted by default. |
+| **Use "idmap_ad" (RFC 2307)**           | This option allows the use of the <a href="https://www.samba.org/samba/docs/current/man-html/idmap_ad.8.html">idmap_ad</a> backend, which implements an API to obtain the Unix attributes of users and groups in the domain through domain controllers, as long as they have NIS extensions enabled. By default, the CID configures winbind to use the <a href="https://www.samba.org/samba/docs/current/man-html/idmap_autorid.8.html">idmap_autorid</a> backend, which establishes these attributes through a predefined configuration on the local system. You can use the `id_range_size`, `max_num_domains`, `wbd_userprofile` and `wbd_usershell` parameters in [cid.conf](#cid.conf) to customize this configuration. When selecting this option, a new form will be presented for configuring the backend with the following fields:<br /><br />- **Initial ID:** Initial value of the range of **UIDs** and **GIDs** that will be mapped by the backend. This field is required, and the value assigned must be greater than the IDs already used by local users and groups;<br /><br />- **Final ID:** End value of the range of **UIDs** and **GIDs** that will be mapped by the backend. When not set, the CID will use a random value based on the value set in the Initial ID field;<br /><br />- **winbind nss info:** This defines whether information about the **home directory** and the **shell** of domain users should also be obtained by the DC with the `rfc2307` option, or whether through a predefined configuration with the `template` option. The **template** option is adopted by default. |
 | **Share all printers on CUPS**          | Enables automatic sharing of all printers configured on the local <a href="http://www.cups.org/">CUPS</a> server through Samba (_SMB protocol_). This makes it unnecessary to configure individual shares for each printer through the [Manage shares](#shares) option. |
 | **Use keytab file method**              | Configures Samba to use a dedicated <a href="http://web.mit.edu/kerberos/krb5-1.14/doc/basic/keytab_def.html">keytab</a> file as an <a href="https://web.mit.edu/kerberos">kerberos</a> authentication method. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab. |
-| **Add config file to "Samba"**          | It allows adding a file containing parameters to be attached to the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by the CID. |
+| **Add config file to "Samba"**          | It allows adding a file containing parameters to be attached to the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters predefined by the CID. |
 
 #### Remove from domain <a name="leave" />
 This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
@@ -216,7 +216,7 @@ Other important aspects about permissions are:
 - Use a plus sign (**+**) at the beginning of the expression to append a new permission to the pre-existing permissions of the shared directory.
 - Use a minus sign (**-**) at the beginning of the expression to remove pre-existing permissions on the shared directory. In this case, the expression must contain only the type and name of the account (eg **-u:username**).
 - The `everyone` term can be used in the **Account** field to represent **all users**.
-- If no permissions are specified when creating a share, all users will be given **read-only** permission.
+- If no permissions are specified when creating a share, **all users** will be given **read-only** permission.
 
 Some examples:
 
@@ -253,7 +253,7 @@ Here is the complete list of arguments for a share:
 | **Apply Quota to Fst-level of Subdirs** | In [Common mode](#common) it applies the `disk quota` and `tolerance quota` (if defined) to the first level subdirectories instead of the shared directory. This is the default behavior for [Userfolder mode](#userfolder). |
 | **Hidden**                              | If set to **Yes**, hides the share of the list of available shares in the net view and browse list. The default value is **No**. |
 | **Allow Guest**                         | If set to **Yes**, allows the share to be accessed without authentication (no password) by any user. The default value is **No**. |
-| **Add Config File**                     | It allows adding a file containing parameters to be attached to the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters defined by CID. |
+| **Add Config File**                     | It allows adding a file containing parameters to be attached to the section of the share in the Samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters predefined by CID. |
 
 The **Remove share** option displays the shares added by the tool and allows you to select them for deletion.  
 
@@ -274,7 +274,7 @@ This function provides the following support options of the program:
 >**Note:** The rows number of the log files can be adjusted by the `logsize` parameter in [cid.conf](#cid.conf) file.
 
 ### cid <a name="cid" />
-The **cid** is the _CLI_ alternative to cid-gtk, and can be used to run all the features of the graphical tool on the command line or in bash scripts.
+The **cid** is the _CLI_ alternative to [cid-gtk](#cid-gtk), and can be used to run all the features of the graphical tool on the command line or in bash scripts.
 
 >**Note:** Use `man cid` command to access the complete manual for that utility.  
 
@@ -305,7 +305,7 @@ The **CID Init Script** is a _Unit file_ for _Systemd_ generated when the comput
 
 You can manually force reconfiguration of files modified by the CID using the command: `systemctl reload cid`. This will also cause the changes made to the [cid.conf](#cid.conf) file after the system joins the domain to will be applied.  
 
-The CID Init Script is a unit file of the _oneshot_ type and does not keep active processes as a common service after the system initialization.
+The CID Init Script is a unit file of the **oneshot** type and does not keep active processes as a common service after the system initialization.
 
 >**Note:** When removing the computer from the domain the CID Init Script is also removed.
 
@@ -361,7 +361,7 @@ The basis for automating the mapping of printers is to use the **lpadmin** comma
 
 <a href="https://man7.org/linux/man-pages/man8/lpadmin.8.html">Lpadmin</a> is a command line utility that configures printers or print classes for _CUPS_. With it, you can easily add, remove or even set a printer as a default on the Linux system.  
 
-Generally, printer management is only allowed for the root user or users who are members of the CUPS management group, whose name may vary from one Linux distribution to another. For this reason, settings for automatic mapping should normally be made in the [logon_root.sh](#logon_lroot.sh) script.
+Generally, printer management is only allowed for the root user or users who are members of the CUPS management group, whose name may vary from one Linux distribution to another. For this reason, definitions of printers mapping should normally be made in the [logon_root.sh](#logon_lroot.sh) script.
 
 	# Eg: Mapping printer-01 only to the administrator user
 	[[ "$USERNAME" == "administrator" ]] && lpadmin -p printer-01 -E -v ipp://printserver/ipp/printer-01 -m everywhere
