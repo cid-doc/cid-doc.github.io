@@ -202,9 +202,9 @@ This mode allows you to share a directory on one of the local file systems via S
 
 The directory path to be shared must be entered in the `Path` argument. If the directory path does not start with a forward slash (**/**) and you are using a `template` for the share, the parent directory of the template share is used as the parent directory for this share. If the directory does not exist, it will be created automatically.  
 
-The access permissions of the share can be managed locally through the `Rule` argument, or through a remote Windows system using the **Microsoft Management Console** (MMC).  
+The access permissions of the share can be managed locally through the `Rule` argument, or through a remote Windows system using the <a href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/what-is-microsoft-management-console">Microsoft Management Console (MMC)</a>.  
 
-When set locally, permissions are translated into extended _POSIX ACLs_ and interpreted by Samba as _Windows ACLs_. They must be composed of 03 fields separated by colons (:) and have the format **[Type]:Account:[Permission]**, where:
+When set locally, permissions are translated into <a href="https://www.usenix.org/legacy/publications/library/proceedings/usenix03/tech/freenix03/full_papers/gruenbacher/gruenbacher_html/main.html">extended POSIX ACLs</a> and interpreted by Samba as <a href="https://docs.microsoft.com/en-us/windows/win32/secauthz/access-control-lists">Windows ACLs</a>. They must be composed of 03 fields separated by colons (:) and have the format **[Type]:Account:[Permission]**, where:
 
 - **Type** is **u** for user or **g** for group;
 - **Account** is a domain user or group;
