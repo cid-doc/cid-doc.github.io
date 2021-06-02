@@ -124,7 +124,7 @@ The CID consists of four main executables subdivided into two graphical tools (`
 | **-h, --help**    | Show the help and exit.    |
 
 ### cid-gtk <a name="cid-gtk" />
-The **cid-gtk** (_GUI_) is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system.  
+The **cid-gtk** is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system.  
 
 The available features are described in the following sections.
 
