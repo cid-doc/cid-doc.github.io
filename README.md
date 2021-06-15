@@ -19,16 +19,16 @@ CID
 - [Features](#Features)  
     - [cid-gtk](#cid-gtk)  
     	- [Join the domain](#join)  
-              - - -> [Advanced mode](#advanced)  
+              - -  [Advanced mode](#advanced)  
     	- [Remove from domain](#leave)  
     	- [Change station behavior](#behavior)  
     	- [Block logon](#block)  
     	- [Unblock logon](#unblock)  
     	- [Manage domain accounts in local groups](#account)  
     	- [Manage shares](#shares)  
-              - - -> [Common mode](#common)  
-              - - -> [Userfolder mode](#userfolder)  
-              - - -> [Printer mode](#printer)  
+              - -  [Common mode](#common)  
+              - -  [Userfolder mode](#userfolder)  
+              - -  [Printer mode](#printer)  
     	- [Help](#help)  
     - [cid](#cid)
     - [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
@@ -41,6 +41,7 @@ CID
 - [Troubleshooting](#Troubleshooting)
     - [Hostname longer than 15 characters](#Hostname)
     - [Graphic Mode Login Managers](#Login)
+    - [Failed to join machines to .local domains](#.local)
 
 ## Description <a name="Description" />
 **CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in **Active Directory** domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.  
@@ -374,6 +375,16 @@ Due to a limitation inherited from the NetBIOS API, hostnames cannot contain mor
 
 ### Graphic Mode Login Managers <a name="Login" />
 In certain Linux distributions, some login managers in their default configuration do not list users who are in a remote source and/or do not have options so that the credentials of those users can be informed through a prompt or text box. In such cases you should consult the manual of your distribution or of the login manager in question to see if these options are available and what settings should be made. If necessary, install a new graphical login manager.
+
+### Failed to join machines to .local domains <a name=".local" />
+It is common to get an error when joining the machine in domains with the <a href="https://en.wikipedia.org/wiki/.local">.local</a> top-level domain (TLD). This is because the .local domain was reserved for applications that use DNS Multicast (mDNS) to provide zero-configuration networks (zeroconf). On linux, <a href="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</a> is an example of these applications. Generally, mDNS resolution is prioritized over Unicast DNS resolution, which prevents querying by domain controllers (DCs) from reaching the domain's DNS servers. A way around this is to associate the IP address of one of the DCs with the domain name in the `/etc/hosts` file, for example:
+
+	# echo -e "192.168.25.25\texample.local" >> /etc/hosts
+
+Being:
+
+- **192.168.25.25** the IP of the DC;
+- **example.local** the domain name;
 
 <br>
 
