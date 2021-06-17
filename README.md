@@ -44,7 +44,7 @@ CID
     - [Failed to join machines to .local domains](#.local)
 
 ## Description <a name="Description" />
-**CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in **Active Directory** domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.  
+**CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in <a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview">Active Directory (AD)</a> domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.  
 
 You can do things like:  
 - Run logon scripts
