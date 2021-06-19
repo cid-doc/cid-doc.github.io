@@ -51,7 +51,7 @@ You can do things like:
 - Automatically mount network shares (files and printers)
 - Offline logon (credential cache)
 - Easily grant privileges to domain users (eg: access to the `sudo` command)
-- Manage **Samba** shares (files and printers) through a graphical interface
+- Manage <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> shares (files and printers) through a graphical interface
 - Apply disk quota per shared directory (such as Windows Server)
 
 
