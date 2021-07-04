@@ -101,9 +101,9 @@ The requirements can be easily installed through the package managers of these d
 ## Installation <a name="Installation" />
 After installing the requirements, download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ wget http://downloads.sf.net/c-i-d/cid-1.1.2.tar.gz
-    $ tar -xzf cid-1.1.2.tar.gz
-    $ cd cid-1.1.2
+    $ wget http://downloads.sf.net/c-i-d/cid-1.1.3.tar.gz
+    $ tar -xzf cid-1.1.3.tar.gz
+    $ cd cid-1.1.3
     $ sudo ./INSTALL.sh
 
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
@@ -388,6 +388,6 @@ Being:
 
 <br>
 
->Release 1.1.2 2021-05-15  
+>Release 1.1.3 2021-07-04  
 >
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
