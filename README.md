@@ -37,7 +37,7 @@ CID
 - [Logon scripts](#Logon_scripts)  
     - [logon.sh and logon_root.sh](#logon_lroot.sh)  
     - [Automatic mapping of file shares](#map_shares)
-    - [Automatic mapping of shared printers](#map_printers)  
+    - [Automatic mapping of printer shares](#map_printers)  
 - [Troubleshooting](#Troubleshooting)
     - [Hostname longer than 15 characters](#Hostname)
     - [Graphic Mode Login Managers](#Login)
@@ -357,7 +357,7 @@ The file systems to be mounted are defined in `<volume ...>` tags. The default s
 
 See the <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">pam_mount documentation</a> for more information on its configuration.
 
-### Automatic mapping of shared printers <a name="map_printers" />
+### Automatic mapping of printer shares <a name="map_printers" />
 The basis for automating the mapping of printers is to use the **lpadmin** command in the [logon scripts](#Logon_scripts).  
 
 <a href="https://man7.org/linux/man-pages/man8/lpadmin.8.html">Lpadmin</a> is a command line utility that configures printers or print classes for _CUPS_. With it, you can easily add, remove or even set a printer as a default on the Linux system.  
