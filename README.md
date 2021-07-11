@@ -16,6 +16,7 @@ CID
         - [CentOS](#CentOS)  
 - [Installation](#Installation)
     - [Ubuntu and derivatives](#Ubuntu)  
+    - [Other distros](#Other)
 - [Features](#Features)  
     - [cid-gtk](#cid-gtk)  
     	- [Join the domain](#join)  
@@ -99,6 +100,14 @@ The requirements can be easily installed through the package managers of these d
 
 
 ## Installation <a name="Installation" />
+### Ubuntu and derivatives <a name="Ubuntu" />
+In *Ubuntu* and its derivations it is possible to install the CID through packages available in a *PPA* repository. These packages contain the [requirements](#Requirements) as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+
+    # add-apt-repository ppa:emoraes25/cid
+    # apt update
+    # apt install cid cid-gtk
+
+### Other distros <a name="Other" />
 After installing the requirements, download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
     $ wget http://downloads.sf.net/c-i-d/cid-1.1.3.tar.gz
@@ -107,13 +116,6 @@ After installing the requirements, download the tarball, unzip it and run as **r
     $ sudo ./INSTALL.sh
 
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
-
-### Ubuntu and derivatives <a name="Ubuntu" />
-In *Ubuntu* and its derivations it is possible to install the CID through packages available in the *PPA* repository. These packages contain the [requirements](#Requirements) as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
-
-    # add-apt-repository ppa:emoraes25/cid
-    # apt update
-    # apt install cid cid-gtk
 
 
 ## Features <a name="Features" />
