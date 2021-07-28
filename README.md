@@ -9,11 +9,10 @@ CID
 ## Contents
 - [Description](#Description)
 - [Requirements](#Requirements)  
-    - [Installation of the requirements in the main Linux distributions](#Install_Requirements)  
+    - [Installation of requirements on some Linux distros](#Install_Requirements)  
         - [Debian](#Debian)
         - [Fedora](#Fedora)
         - [OpenSUSE](#OpenSUSE)  
-        - [CentOS](#CentOS)  
 - [Installation](#Installation)
     - [Ubuntu and derivatives](#Ubuntu)  
     - [Other distros](#Other)
@@ -57,46 +56,42 @@ You can do things like:
 
 
 ## Requirements <a name="Requirements" />
-- bash (>= 4)
-- awk (= any)
-- {diff,find,core}utils (= any)
-- grep (= any)
-- sed (= any)
-- gzip (= any)
-- hostname (= any)
-- mount (= any)
-- passwd (= any)
-- systemd (= any)
 - acl (= any)
 - attr (= any)
+- awk (= any)
+- bash (>= 4)
+- cifs-utils (>= 6.4)
+- CUPS (= any)
+- {diff,find,core}utils (= any)
+- grep (= any)
+- gzip (= any)
+- hostname (= any)
+- iproute[2] (= any)
+- Kerberos V5 (>= 1.13)
+- keyutils (= any)
+- mount (= any)
+- pam_mount (>= 2.14)
+- passwd (= any)
+- ping (= any)
+- pkexec (= any)
+- Samba (>= 4.3.11)
+- sed (= any)
 - sudo (= any)
-- pkexec [polkit] (= any)
+- systemd (= any)
 - xhost (= any)
 - zenity (>= 3.18.1)
-- iproute[2] (= any)
-- ping (= any)
-- keyutils (= any)
-- Kerberos V5 (>= 1.13)
-- Samba with Winbind (>= 4.3.11)
-- cifs-utils (>= 6.4)
-- pam_mount (>= 2.14)
-- CUPS [server and clients tools] (= any)
 
-### Installation of the requirements in the main Linux distributions <a name="Install_Requirements" />
+### Installation of requirements on some Linux distros <a name="Install_Requirements" />
 The requirements can be easily installed through the package managers of these distributions:
 
 #### Debian <a name="Debian" />
-    # apt install passwd sudo acl attr systemd x11-xserver-utils policykit-1 zenity iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-winbind samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient samba cifs-utils libpam-mount cups-daemon cups-client
+    # apt install acl attr cifs-utils cups-client cups-daemon iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-mount libpam-winbind passwd policykit-1 samba samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient sudo systemd x11-xserver-utils zenity
 
 #### Fedora <a name="Fedora" />
-    # dnf install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups cups-client
+    # dnf install acl attr cifs-utils cups cups-client gvfs-smb iproute iputils keyutils krb5-workstation pam_mount samba samba-client samba-winbind samba-winbind-clients shadow-utils sudo systemd xhost zenity
 
 #### OpenSUSE <a name="OpenSUSE" />
-	# zypper install sudo acl attr systemd xhost zenity iproute2 iputils keyutils krb5-client samba-dsdb-modules gvfs-backend-samba samba-winbind samba-client samba cifs-utils pam_mount cups-client cups
-
-#### CentOS <a name="CentOS" />
-    # yum install epel-release
-    # yum install shadow-utils sudo acl attr systemd xorg-x11-server-utils zenity iproute iputils keyutils krb5-workstation gvfs-smb samba-winbind samba-winbind-clients samba-client samba cifs-utils pam_mount cups
+	# zypper install acl attr cifs-utils cups cups-client gvfs-backend-samba iproute2 iputils keyutils krb5-client pam_mount samba samba-client samba-dsdb-modules samba-winbind sudo systemd xhost zenity
 
 
 ## Installation <a name="Installation" />
@@ -110,9 +105,9 @@ In *Ubuntu* and its derivations it is possible to install the CID through packag
 ### Other distros <a name="Other" />
 After installing the requirements, download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ wget http://downloads.sf.net/c-i-d/cid-1.1.3.tar.gz
-    $ tar -xzf cid-1.1.3.tar.gz
-    $ cd cid-1.1.3
+    $ wget http://downloads.sf.net/c-i-d/cid-1.1.4.tar.gz
+    $ tar -xzf cid-1.1.4.tar.gz
+    $ cd cid-1.1.4
     $ sudo ./INSTALL.sh
 
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
@@ -390,6 +385,6 @@ Being:
 
 <br>
 
->Release 1.1.3 2021-07-04  
+>Release 1.1.4 2021-07-27  
 >
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
