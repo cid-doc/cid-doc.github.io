@@ -1,3 +1,11 @@
+Release 1.1.4 [2021-07-27]
+---------------------------
+* Fixed testing of global IPv6 addresses.
+* Changed installation of Bash completion script from the /etc/bash_completion.d
+  to /usr/share/bash-completion/completions directory.
+* Added support for logon scripts on xrdp connections.
+
+
 Release 1.1.3 [2021-07-04]
 ---------------------------
 * Fixed offline authentication failure in Debian/Ubuntu based distros.
