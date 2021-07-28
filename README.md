@@ -98,9 +98,9 @@ The requirements can be easily installed through the package managers of these d
 ### Ubuntu and derivatives <a name="Ubuntu" />
 In *Ubuntu* and its derivations it is possible to install the CID through packages available in a *PPA* repository. These packages contain the [requirements](#Requirements) as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
 
-    # add-apt-repository ppa:emoraes25/cid
-    # apt update
-    # apt install cid cid-gtk
+    $ sudo add-apt-repository ppa:emoraes25/cid
+    $ sudo apt update
+    $ sudo apt install cid cid-gtk
 
 ### Other distros <a name="Other" />
 After installing the requirements, download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
@@ -376,7 +376,7 @@ In certain Linux distributions, some login managers in their default configurati
 ### Failed to join machines to .local domains <a name=".local" />
 It is common to get an error when joining the machine in domains with the <a href="https://en.wikipedia.org/wiki/.local">.local</a> top-level domain (TLD). This is because the .local domain was reserved for applications that use DNS Multicast (mDNS) to provide zero-configuration networks (zeroconf). On linux, <a href="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</a> is an example of these applications. Generally, mDNS resolution is prioritized over Unicast DNS resolution, which prevents querying by domain controllers (DCs) from reaching the domain's DNS servers. A way around this is to associate the IP address of one of the DCs with the domain name in the `/etc/hosts` file, for example:
 
-	# echo -e "192.168.25.25\texample.local" >> /etc/hosts
+	echo -e "192.168.25.25\texample.local" | sudo tee -a /etc/hosts
 
 Being:
 
