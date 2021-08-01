@@ -85,13 +85,13 @@ You can do things like:
 The requirements can be easily installed through the package managers of these distributions:
 
 #### Debian <a name="Debian" />
-    # apt install acl attr cifs-utils cups-client cups-daemon iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-mount libpam-winbind passwd policykit-1 samba samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient sudo systemd x11-xserver-utils zenity
+	apt install acl attr cifs-utils cups-client cups-daemon iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-mount libpam-winbind passwd policykit-1 samba samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient sudo systemd x11-xserver-utils zenity
 
 #### Fedora <a name="Fedora" />
-    # dnf install acl attr cifs-utils cups cups-client gvfs-smb iproute iputils keyutils krb5-workstation pam_mount samba samba-client samba-winbind samba-winbind-clients shadow-utils sudo systemd xhost zenity
+	dnf install acl attr cifs-utils cups cups-client gvfs-smb iproute iputils keyutils krb5-workstation pam_mount samba samba-client samba-winbind samba-winbind-clients shadow-utils sudo systemd xhost zenity
 
 #### OpenSUSE <a name="OpenSUSE" />
-	# zypper install acl attr cifs-utils cups cups-client gvfs-backend-samba iproute2 iputils keyutils krb5-client pam_mount samba samba-client samba-dsdb-modules samba-winbind sudo systemd xhost zenity
+	zypper install acl attr cifs-utils cups cups-client gvfs-backend-samba iproute2 iputils keyutils krb5-client pam_mount samba samba-client samba-dsdb-modules samba-winbind sudo systemd xhost zenity
 
 
 ## Installation <a name="Installation" />
@@ -103,11 +103,11 @@ In *Ubuntu* and its derivations it is possible to install the CID through packag
     $ sudo apt install cid cid-gtk
 
 ### Other distros <a name="Other" />
-After installing the requirements, download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
+After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ wget http://downloads.sf.net/c-i-d/cid-1.1.4.tar.gz
-    $ tar -xzf cid-1.1.4.tar.gz
-    $ cd cid-1.1.4
+    $ wget http://downloads.sf.net/c-i-d/cid-1.1.5.tar.gz
+    $ tar -xzf cid-1.1.5.tar.gz
+    $ cd cid-1.1.5
     $ sudo ./INSTALL.sh
 
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
@@ -385,6 +385,6 @@ Being:
 
 <br>
 
->Release 1.1.4 2021-07-27  
+>Release 1.1.5 2021-07-31  
 >
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
