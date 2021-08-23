@@ -105,9 +105,10 @@ In *Ubuntu* and its derivations it is possible to install the CID through packag
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ wget http://downloads.sf.net/c-i-d/cid-1.1.5.tar.gz
-    $ tar -xzf cid-1.1.5.tar.gz
-    $ cd cid-1.1.5
+    $ ver=1.1.6
+    $ wget http://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
+    $ tar -xzf cid-${ver}.tar.gz
+    $ cd cid-${ver}
     $ sudo ./INSTALL.sh
 
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
@@ -385,6 +386,6 @@ Being:
 
 <br>
 
->Release 1.1.5 2021-07-31  
+>Release 1.1.6 2021-08-22  
 >
 >*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
