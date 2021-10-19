@@ -8,13 +8,12 @@ CID
 
 ## Contents
 - [Description](#Description)
-- [Requirements](#Requirements)  
-    - [Installation of requirements on some Linux distros](#Install_Requirements)  
-        - [Debian](#Debian)
-        - [Fedora](#Fedora)
-        - [OpenSUSE](#OpenSUSE)  
+- [Requirements](#Requirements)
 - [Installation](#Installation)
-    - [Ubuntu and derivatives](#Ubuntu)  
+    - [Ubuntu](#Ubuntu)
+    - [Debian](#Debian)
+    - [Fedora](#Fedora)
+    - [OpenSUSE](#OpenSUSE)
     - [Other distros](#Other)
 - [Features](#Features)  
     - [cid-gtk](#cid-gtk)  
@@ -36,8 +35,8 @@ CID
     - [CID Init Script](#CIS)  
 - [Logon scripts](#Logon_scripts)  
     - [logon.sh and logon_root.sh](#logon_lroot.sh)  
-    - [Automatic mapping of file shares](#map_shares)
-    - [Automatic mapping of printer shares](#map_printers)  
+    - [Automatic mounting of file shares](#map_shares)
+    - [Automatic configuration of printers](#map_printers)  
 - [Troubleshooting](#Troubleshooting)
     - [Hostname longer than 15 characters](#Hostname)
     - [Graphic Mode Login Managers](#Login)
@@ -81,32 +80,38 @@ You can do things like:
 - xhost (= any)
 - zenity (>= 3.18.1)
 
-### Installation of requirements on some Linux distros <a name="Install_Requirements" />
-The requirements can be easily installed through the package managers of these distributions:
-
-#### Debian <a name="Debian" />
-	apt install acl attr cifs-utils cups-client cups-daemon iproute2 iputils-ping keyutils krb5-user libnss-winbind libpam-mount libpam-winbind passwd policykit-1 samba samba-common-bin samba-dsdb-modules samba-vfs-modules smbclient sudo systemd x11-xserver-utils zenity
-
-#### Fedora <a name="Fedora" />
-	dnf install acl attr cifs-utils cups cups-client gvfs-smb iproute iputils keyutils krb5-workstation pam_mount samba samba-client samba-winbind samba-winbind-clients shadow-utils sudo systemd xhost zenity
-
-#### OpenSUSE <a name="OpenSUSE" />
-	zypper install acl attr cifs-utils cups cups-client gvfs-backend-samba iproute2 iputils keyutils krb5-client pam_mount samba samba-client samba-dsdb-modules samba-winbind sudo systemd xhost zenity
-
 
 ## Installation <a name="Installation" />
-### Ubuntu and derivatives <a name="Ubuntu" />
-In *Ubuntu* and its derivations it is possible to install the CID through packages available in a *PPA* repository. These packages contain the [requirements](#Requirements) as dependencies, which allows them to be automatically installed.The following are the commands for installing these packages:
+### Ubuntu <a name="Ubuntu" />
 
     $ sudo add-apt-repository ppa:emoraes25/cid
     $ sudo apt update
     $ sudo apt install cid cid-gtk
 
+### Debian <a name="Debian" />
+
+    $ wget -O - https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY | sudo apt-key add -
+    $ echo 'deb https://downloads.sf.net/c-i-d/pkgs/apt/debian sid main' | sudo tee /etc/apt/sources.list.d/cid.list
+    $ sudo apt update
+    $ sudo apt install cid cid-gtk
+
+#### Fedora <a name="Fedora" />
+
+    $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
+    $ sudo dnf config-manager --add-repo https://downloads.sf.net/c-i-d/pkgs/rpm/fedora/cid.repo
+    $ sudo dnf install cid
+
+#### OpenSUSE <a name="OpenSUSE" />
+
+    $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
+    $ sudo zypper ar https://downloads.sf.net/c-i-d/pkgs/rpm/opensuse/cid.repo
+    $ sudo zypper in cid
+
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.1.6
-    $ wget http://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
+    $ ver=1.1.6 #current version
+    $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
     $ sudo ./INSTALL.sh
@@ -334,36 +339,36 @@ In both scripts, in addition to the known bash variables, you can use the follow
 | **USERGROUP**   | Primary group name of the user that is opening session. |
 | **USERGROUPS**  | Group list separated by commas (**,**) of the user that is opening session. |
 
-### Automatic mapping of file shares <a name="map_shares" />
-The automatic mapping of file shares during users logon can be performed through the **pam_mount** module.  
+### Automatic mounting of file shares <a name="map_shares" />
+The automatic mounting of file shares during users logon can be performed through the **pam_mount** module.  
 
 <a href="http://pam-mount.sourceforge.net/">Pam_mount</a> is a library that allows you to mount a file system transparently through PAM authentication. In general, the file systems to be mounted are defined in your global configuration file (usually `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of this file stored on Netlogon, which replaces the original configuration file on Linux computers of the domain during users logon. In this way, all configuration can be centralized in this single file to be applied to all theses computers.  
 
 The file systems to be mounted are defined in `<volume ...>` tags. The default shares.xml file contains some examples of defining common SMB shares, such as:
 
-	<!-- Mapping a public share (full access to everyone) -->
+	<!-- Mounting a public share (full access to everyone) -->
 	<volume fstype="cifs" server="fileserver" path="PUBLIC" mountpoint="~/PUBLIC" />
 
-	<!-- Mapping the user folder (a "homes" section created by CID on Samba) -->
+	<!-- Mounting user folder (a "homes" section created by CID on Samba) -->
 	<volume fstype="cifs" server="fileserver" path="%(USER)" mountpoint="~/MyNetFolder" />
 
-	<!-- Conditional mapping to the ITD group domain -->
+	<!-- Conditional mounting to the ITD group domain -->
 	<volume sgrp="itd" fstype="cifs" server="fileserver" path="ITD$" mountpoint="~/ITD" />
 
-	<!-- Conditional mapping to a ITD group of other trusted domain -->
+	<!-- Conditional mounting to a ITD group of other trusted domain -->
 	<volume sgrp="SAMPLE\itd" fstype="cifs" server="fileserver" path="ITD$" mountpoint="~/ITD" options="domain=SAMPLE" />
 
 See the <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">pam_mount documentation</a> for more information on its configuration.
 
-### Automatic mapping of printer shares <a name="map_printers" />
-The basis for automating the mapping of printers is to use the **lpadmin** command in the [logon scripts](#Logon_scripts).  
+### Automatic configuration of printers <a name="map_printers" />
+One way to automate printers setup is to use the **lpadmin** utility in [logon scripts](#Logon_scripts).  
 
 <a href="https://man7.org/linux/man-pages/man8/lpadmin.8.html">Lpadmin</a> is a command line utility that configures printers or print classes for _CUPS_. With it, you can easily add, remove or even set a printer as a default on the Linux system.  
 
 Generally, printer management is only allowed for the root user or users who are members of the CUPS management group, whose name may vary from one Linux distribution to another. For this reason, definitions of printers mapping should normally be made in the [logon_root.sh](#logon_lroot.sh) script.
 
 	# Eg: Mapping printer-01 only to the administrator user
-	[[ "$USERNAME" == "administrator" ]] && lpadmin -p printer-01 -E -v ipp://printserver/ipp/printer-01 -m everywhere
+	[[ "$USERNAME" == "administrator" ]] && lpadmin -p printer-01 -E -v ipp://printserver/printers/printer-01 -m everywhere
 
 ## Troubleshooting <a name="Troubleshooting" />
 This section describes known cases related to the program.
