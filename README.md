@@ -314,7 +314,7 @@ The CID Init Script is a unit file of the **oneshot** type and does not keep act
 >**Note:** When removing the computer from the domain the CID Init Script is also removed.
 
 ## Logon scripts <a name="Logon_scripts" />
-The CID can configure the Linux system to allow bash scripts stored in the **Netlogon** share to be executed when the domain users will made logon.  
+The CID can configure the Linux computer to allow bash scripts stored on the **Netlogon** share to run when domain users logon.  
 
 Basically the process consists of mounting the Netlogon on local file system, and then executed the scripts in the system shell. In the end, Netlogon is unmounted again. All of this is done automatically and transparently to the user.
 
