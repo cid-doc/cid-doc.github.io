@@ -392,5 +392,4 @@ Being:
 <br>
 
 >Release 1.1.6 2021-08-22  
->
->*Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>*
+>Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>
