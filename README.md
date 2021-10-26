@@ -367,8 +367,8 @@ One way to automate printers setup is to use the **lpadmin** utility in [logon s
 
 Generally, printer management is only allowed for the root user or users who are members of the CUPS management group, whose name may vary from one Linux distribution to another. For this reason, definitions of printers mapping should normally be made in the [logon_root.sh](#logon_lroot.sh) script.
 
-	# Eg: Mapping printer-01 only to the administrator user
-	[[ "$USERNAME" == "administrator" ]] && lpadmin -p printer-01 -E -v ipp://printserver/printers/printer-01 -m everywhere
+	# Eg: Adding printer to the system
+	lpadmin -p printer -E -v ipp://printer/ipp/printer -m everywhere
 
 ## Troubleshooting <a name="Troubleshooting" />
 This section describes known cases related to the program.
