@@ -1,7 +1,7 @@
 CID
 ===
 
-**License: [GPL-3+](docs/COPYING.txt)**  
+**License: [GPL-3](docs/COPYING.txt)**  
 
 [Homepage](https://c-i-d.sourceforge.io) | [Discussion](https://sourceforge.net/p/c-i-d/discussion/) | [Donations](https://sourceforge.net/p/c-i-d/donate) | [Changelog](docs/CHANGELOG.txt)  
 
