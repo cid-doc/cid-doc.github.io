@@ -1,3 +1,18 @@
+Release 1.1.7 [2021-11-03]
+---------------------------
+Fixed display of IP addresses in status.
+Fixed domain join failure on IPv6 networks.
+Fixed mount of netlogon on IPv6 networks.
+New PolicyKit policy file.
+Updated .desktop files.
+Updated bash completion script.
+Added commit requirement to perform `cid leave` with no arguments.
+Added filtering the `cid acccount list` command by account name.
+Added filtering the `cid share list` command by share name.
+New 'excl_localgroups' parameter in cid.conf.
+Optimization of source code.
+
+
 Release 1.1.6 [2021-08-22]
 ---------------------------
 Changed CID logs to Syslog format.
