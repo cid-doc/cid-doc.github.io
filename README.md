@@ -110,7 +110,7 @@ You can do things like:
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.1.6 #current version
+    $ ver=1.1.7 #current version
     $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
@@ -391,5 +391,5 @@ Being:
 
 <br>
 
->Release 1.1.6 2021-08-22  
+>Release 1.1.7 2021-11-03  
 >Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>
