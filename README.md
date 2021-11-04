@@ -15,24 +15,23 @@ CID
     - [Fedora](#Fedora)
     - [OpenSUSE](#OpenSUSE)
     - [Other distros](#Other)
-- [Features](#Features)  
-    - [cid-gtk](#cid-gtk)  
-    	- [Join the domain](#join)  
-              - - [Advanced mode](#advanced)  
-    	- [Remove from domain](#leave)  
-    	- [Change station behavior](#behavior)  
-    	- [Block logon](#block)  
-    	- [Unblock logon](#unblock)  
-    	- [Manage domain accounts in local groups](#account)  
-    	- [Manage shares](#shares)  
-              - - [Common mode](#common)  
-              - - [Userfolder mode](#userfolder)  
-              - - [Printer mode](#printer)  
-    	- [Help](#help)  
-    - [cid](#cid)
-    - [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
-    - [cid.conf](#cid.conf)  
-    - [CID Init Script](#CIS)  
+- [cid-gtk](#cid-gtk)  
+    - [Join the domain](#join)  
+        - [Advanced mode](#advanced)  
+    - [Remove from domain](#leave)  
+    - [Change station behavior](#behavior)  
+    - [Block logon](#block)  
+    - [Unblock logon](#unblock)  
+    - [Manage domain accounts in local groups](#account)  
+    - [Manage shares](#shares)  
+        - [Common mode](#common)  
+        - [Userfolder mode](#userfolder)  
+        - [Printer mode](#printer)  
+    - [Help](#help)  
+- [cid](#cid)
+- [cid-change-pass and cid-change-pass-gtk](#ccp_ccp-gtk)  
+- [cid.conf](#cid.conf)  
+- [CID Init Script](#CIS)  
 - [Logon scripts](#Logon_scripts)  
     - [logon.sh and logon_root.sh](#logon_lroot.sh)  
     - [Automatic mounting of file shares](#map_shares)
@@ -52,6 +51,13 @@ You can do things like:
 - Easily grant privileges to domain users (eg: access to the `sudo` command)
 - Manage <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> shares (files and printers) through a graphical interface
 - Apply disk quota per shared directory (such as Windows Server)
+
+CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gtk) and [cid-change-pass-gtk](#ccp_ccp-gtk)) and two CLI utilities ([cid](#cid) and [cid-change-pass](#ccp_ccp-gtk)). Both pairs contain equivalent features and they all accept the following general options as a argument in the command line:  
+
+| Options           | Description      |
+| ----------------- | ---------------- |
+| **-v, --version** | Show the version |
+| **-h, --help**    | Show the help    |
 
 
 ## Requirements <a name="Requirements" />
@@ -119,20 +125,12 @@ After installing the [requirements](#Requirements), download the tarball, unzip 
 >**Note:** Run `sudo ./INSTALL.sh uninstall` to uninstall the program files from the same version of the package.
 
 
-## Features <a name="Features" />
-The CID consists of four main executables subdivided into two graphical tools (`cid-gtk` and `cid-change-pass-gtk`) and two command line utilities (`cid` and `cid-change-pass`). Both pairs contain equivalent features and they all accept the following general options as a argument in the command line:  
-
-| Options           | Description                |
-| ----------------- | -------------------------- |
-| **-v, --version** | Show the version and exit. |
-| **-h, --help**    | Show the help and exit.    |
-
-### cid-gtk <a name="cid-gtk" />
+## cid-gtk <a name="cid-gtk" />
 The **cid-gtk** is the tool that contains the main features of the program. Through it you can insert your Linux computer in an AD domain and later manage a series of functions in the system.  
 
 The available features are described in the following sections.
 
-#### Join the domain <a name="join" />
+### Join the domain <a name="join" />
 This function allows you to join the Linux computer to an AD domain. For that, it is necessary to inform the domain data in the respective fields as shown in the table below:
 
 | Field                   | Description |
@@ -145,7 +143,7 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 
 >**Note:** Before modifying the system files, the CID makes a backup in the `/var/lib/cid/backups/ori` directory.
 
-##### Advanced mode <a name="advanced" />
+#### Advanced mode <a name="advanced" />
 The options available in this mode are:
 
 | Option                                  | Description |
@@ -161,25 +159,25 @@ The options available in this mode are:
 | **Use keytab file method**              | Configures Samba to use a dedicated <a href="http://web.mit.edu/kerberos/krb5-1.14/doc/basic/keytab_def.html">keytab</a> file as an <a href="https://web.mit.edu/kerberos">kerberos</a> authentication method. The `krb_principal_names` parameter in the [cid.conf](#cid.conf) file can be used to specify principal names that you want to be added to the keytab. |
 | **Add config file to "Samba"**          | It allows adding a file containing parameters to be attached to the _Global_ section of the samba configuration file (_smb.conf_). The contents of this file will be filtered so that there is no conflict with the parameters predefined by the CID. |
 
-#### Remove from domain <a name="leave" />
+### Remove from domain <a name="leave" />
 This function undoes the modifications made in the system for the computer to [join the domain](#join), and by the use of the other CID functionalities after that join.  
 
 When using it, you can optionally fill in the fields with the credentials of a domain administrator for what the CID try remotely delete the computer account from the AD database. If this fails, the operation of this function will not be affected.
 
 >**Note:** A copy of the files modified during this process is stored in the `/var/lib/cid/backups/mod` directory.
 
-#### Change station behavior <a name="behavior" />
+### Change station behavior <a name="behavior" />
 This function allows you to change the options of the [Advanced mode](#advanced) after the system joins an AD domain.
 
 >**Note:** Whenever a change is made through this função, a copy of the affected files in the state before modification is stored in the `/var/lib/cid/backups/mod` directory.
 
-#### Block logon <a name="block" />
+### Block logon <a name="block" />
 This function restricts logon in the system to a specific user or group of the domain. When selecting it you must inform the **Account Type** (User or Group) and the **Account Name**. If no type is selected, the _User_ type is assumed by default.
 
-#### Unblock logon <a name="unblock" />
+### Unblock logon <a name="unblock" />
 This function removes the logon restriction applied by the [block logon](#block) function.
 
-#### Manage domain accounts in local groups <a name="account" />
+### Manage domain accounts in local groups <a name="account" />
 This function allows you to associate domain user accounts with groups on the local system so that they can perform specific routines that require the administrative privileges of those groups, in addition to allowing them to run the `sudo` command.  
 
 Authentication for the sudo command can be enabled or disabled via the `Enable authentication for "sudo"` option in [advanced join mode](#advanced) or in [Change station behavior](#behavior).  
@@ -194,14 +192,14 @@ The **Remove account** option lists domain accounts added to local groups and al
 
 >**Note:** Members of the **Domain Admins** group are automatically associated with local groups.
 
-#### Manage shares <a name="shares" />
+### Manage shares <a name="shares" />
 This function allows you to manage _Samba_ shares intuitively.  
 
 The **Add share** option displays a form where you must enter the arguments to create or update a share.  
 
 Three share modes are available:
 
-##### Common mode <a name="common" />
+#### Common mode <a name="common" />
 This mode allows you to share a directory on one of the local file systems via Samba (_SMB protocol_).  
 
 The directory path to be shared must be entered in the `Path` argument. If the directory path does not start with a forward slash (**/**) and you are using a `template` for the share, the parent directory of the template share is used as the parent directory for this share. If the directory does not exist, it will be created automatically.  
@@ -236,10 +234,10 @@ Some examples:
 ###### Allowing full access to all users and denying access to the Guests group
 	u:everyone:f;g:guests:d
 
-##### Userfolder mode <a name="userfolder" />
+#### Userfolder mode <a name="userfolder" />
 This mode enables the **homes** section of Samba, which is a special type of file sharing that automatically provides a share with the same name as the user who accesses it. In this mode, the `Path` argument must contain the path of the parent directory where the diretories for each user are to be created. If this argument is omitted, the `/home` directory will be assumed by default. CID automatically creates user directories with appropriate permissions as users first access their respective shares. If **disk quota** is used, it will be automatically applied to each user directory.
 
-##### Printer mode <a name="printer" />
+#### Printer mode <a name="printer" />
 Mode used to share a printer configured on the local _CUPS_ server through Samba (_SMB protocol_). This is optional or unnecessary when the `Share all printers on CUPS` option (see [Advanced mode](#advanced)) is enabled. In this mode, the `Path` argument must receive the name of a configured printer in CUPS instead of a directory path. If left blank, this argument will receive the value used in the `Name` argument or vice versa. When printer sharing is enabled, a special file share called **print$** will be configured to automatically provide shared printer drivers to Windows clients on the network. The location of the directory to be used for this share can be adjusted using the `prtdrvdir` parameter in the [cid.conf](#cid.conf) file. Driver files must be manually copied to this directory or you must use a Windows system utility to manage the drivers on that print server (visit this <a href="https://wiki.samba.org/index.php/ Setting_up_Automatic_Printer_Driver_Downloads_for_Windows_Clients">link</a> for more information).  
 
 Here is the complete list of arguments for a share:
@@ -265,7 +263,7 @@ When you delete a share from [Common mode](#common), _Extended POSIX ACLs_ are r
 
 When you delete a share of the [Printer mode](#printer), only the configuration in Samba is removed. The configuration of the printer on the CUPS server is not affected.
 
-#### Help <a name="help" />
+### Help <a name="help" />
 This function provides the following support options of the program:
 
 | Option           | Description |
@@ -277,12 +275,12 @@ This function provides the following support options of the program:
 
 >**Note:** The rows number of the log files can be adjusted by the `logsize` parameter in [cid.conf](#cid.conf) file.
 
-### cid <a name="cid" />
+## cid <a name="cid" />
 The **cid** is the _CLI_ alternative to [cid-gtk](#cid-gtk), and can be used to run all the features of the graphical tool on the command line or in bash scripts.
 
 >**Note:** Use `man cid` command to access the complete manual for that utility.  
 
-### cid-change-pass and cid-change-pass-gtk <a name="ccp_ccp-gtk" />
+## cid-change-pass and cid-change-pass-gtk <a name="ccp_ccp-gtk" />
 The `cid-change-pass` is a command line utility that allows domain users to change their passwords directly from the Linux computer joined to AD.  
 
 The command must be executed by the user himself who wants to change his password. It must inform the program of its **current password** and the **new password**. This may contain restrictions according to the domain's security policies.  
@@ -291,7 +289,7 @@ If run as a superuser (**root**), the program should receive one or more domain 
 
 The `cid-change-pass-gtk` tool provides a simple and intuitive graphical interface to the `cid-change-pass` utility.
 
-### cid.conf <a name="cid.conf" />
+## cid.conf <a name="cid.conf" />
 The **cid.conf** is a configuration file installed in the `/etc/cid` directory which allows you to adjust the values of the variables used in the CID scripts adapting its operation to the Linux environment to which it was installed.  
 
 The parameters in this file are declared as bash variables in the following format:
@@ -304,8 +302,8 @@ Lines that start with a **hashtag (#)** are just comments and are not interprete
 
 >**Note:** Modifications made to the file after the system has already been joined to a domain will only be applied if you reload the [CID Init Script](#CIS) with the command: `systemctl reload cid`.
 
-### CID Init Script <a name="CIS" />
-The **CID Init Script** is a _Unit file_ for _Systemd_ generated when the computer joins the domain and is responsible for maintaining the settings made by the CID, and also for making other adjustments during system initialization, such as forcing time synchronization with the domain controllers and update the `/etc/hosts` file (useful in DHCP-based networks).  
+## CID Init Script <a name="CIS" />
+The **CID Init Script** is a _Unit file_ for _Systemd_ generated when the computer joins the domain and is responsible for maintaining the settings made by the CID and also for making other adjustments during system initialization, such as forcing time synchronization with the domain controllers and update the `/etc/hosts` file (useful in DHCP-based networks).  
 
 You can manually force reconfiguration of files modified by the CID using the command: `systemctl reload cid`. This will also cause the changes made to the [cid.conf](#cid.conf) file after the system joins the domain to will be applied.  
 
@@ -368,7 +366,7 @@ One way to automate printers setup is to use the **lpadmin** utility in [logon s
 Generally, printer management is only allowed for the root user or users who are members of the CUPS management group, whose name may vary from one Linux distribution to another. For this reason, definitions of printers mapping should normally be made in the [logon_root.sh](#logon_lroot.sh) script.
 
 	# Eg: Adding printer to the system
-	lpadmin -p printer -E -v ipp://printer/ipp/printer -m everywhere
+	lpadmin -p printer -E -v ipp://printer_address/ipp/printer -m everywhere
 
 ## Troubleshooting <a name="Troubleshooting" />
 This section describes known cases related to the program.
