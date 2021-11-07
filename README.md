@@ -104,13 +104,15 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Fedora <a name="Fedora" />
 
     $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
-    $ sudo dnf config-manager --add-repo https://downloads.sf.net/c-i-d/pkgs/rpm/fedora/cid.repo
+    $ sudo dnf config-manager --add-repo https://downloads.sf.net/c-i-d/pkgs/rpm/cid.repo
+    $ sudo dnf clean all
     $ sudo dnf install cid
 
 ### OpenSUSE <a name="OpenSUSE" />
 
     $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
-    $ sudo zypper ar https://downloads.sf.net/c-i-d/pkgs/rpm/opensuse/cid.repo
+    $ sudo zypper ar https://downloads.sf.net/c-i-d/pkgs/rpm/cid.repo
+    $ sudo zypper ref
     $ sudo zypper in cid
 
 ### Other distros <a name="Other" />
