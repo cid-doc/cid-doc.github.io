@@ -22,7 +22,7 @@ CID
     - [Change station behavior](#behavior)
     - [Block logon](#block)
     - [Unblock logon](#unblock)
-    - [Manage domain accounts in local groups](#account)
+    - [Manage AD accounts in local groups](#account)
     - [Manage shares](#shares)
         - [Common mode](#common)
         - [Userfolder mode](#userfolder)
@@ -118,7 +118,7 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.1.9 #current version
+    $ ver=1.2.0 #current version
     $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
@@ -179,8 +179,8 @@ This function restricts logon in the system to a specific user or group of the d
 ### Unblock logon <a name="unblock" />
 This function removes the logon restriction applied by the [block logon](#block) function.
 
-### Manage domain accounts in local groups <a name="account" />
-This function allows you to associate domain user accounts with groups on the local system so that they can perform specific routines that require the administrative privileges of those groups, in addition to allowing them to run the `sudo` command.  
+### Manage AD accounts in local groups <a name="account" />
+This function allows you to associate AD user accounts with groups on the local system so that they can perform specific routines that require the administrative privileges of those groups, in addition to allowing them to run the `sudo` command.  
 
 Authentication for the sudo command can be enabled or disabled via the `Enable authentication for "sudo"` option in [advanced join mode](#advanced) or in [Change station behavior](#behavior).  
  
@@ -391,5 +391,5 @@ Being:
 
 <br>
 
->Release 1.1.9 2021-11-10  
+>Release 1.2.0 2021-11-12  
 >Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>
