@@ -1,15 +1,23 @@
-Release 1.1.9 [2021-11-10]
----------------------------
+Release 1.2.0 2021-11-12
+------------------------
+- Fixed error showing file selection dialog after selecting
+`Add config file to Samba` option in advanced join mode of cid-gtk.
+- `Manage domain accounts in local groups` option has been replaced by
+`Manage AD accounts in local groups` in cid-gtk.
+- Optimization of source code.
+
+Release 1.1.9 2021-11-10
+------------------------
 - Fixed overwrites of the cid.conf file in updates.
 - Optimization of source code.
 
-Release 1.1.8 [2021-11-05]
----------------------------
+Release 1.1.8 2021-11-05
+------------------------
 - Fixed PAM configuration error.
 - Fixed CID Init Script configuration error.
 
-Release 1.1.7 [2021-11-03]
----------------------------
+Release 1.1.7 2021-11-03
+------------------------
 - Fixed display of IP addresses in status.
 - Fixed domain join failure on IPv6 networks.
 - Fixed mount of netlogon on IPv6 networks.
@@ -22,55 +30,55 @@ Release 1.1.7 [2021-11-03]
 - New `excl_localgroups` parameter in cid.conf.
 - Optimization of source code.
 
-Release 1.1.6 [2021-08-22]
----------------------------
+Release 1.1.6 2021-08-22
+------------------------
 - Changed CID logs to Syslog format.
 - Disabled the debug flag of the pam_winbind module.
 
-Release 1.1.5 [2021-07-31]
----------------------------
+Release 1.1.5 2021-07-31
+------------------------
 - Code optimization.
 
-Release 1.1.4 [2021-07-27]
----------------------------
+Release 1.1.4 2021-07-27
+------------------------
 - Fixed testing of global IPv6 addresses.
 - Changed installation of Bash completion script from the `/etc/bash_completion.d`
 to `/usr/share/bash-completion/completions` directory.
 - Added support for logon scripts on xrdp connections.
 
-Release 1.1.3 [2021-07-04]
----------------------------
+Release 1.1.3 2021-07-04
+------------------------
 - Fixed offline authentication failure in Debian/Ubuntu based distros.
 - Activation of the Samba support to Group Policies (GPO) along with
 the CID logon scripts.
 - Updated documentation address.
 
-Release 1.1.2 [2021-05-15]
----------------------------
+Release 1.1.2 2021-05-15
+------------------------
 - New `add_pam_authmod` and `pam_mod_dir` parameters added to the cid.conf file.
 - lsb-release removed from requirements.
 - Fix of the change in behavior options by the cid utility.
 
-Release 1.1.1 [2021-03-19]
----------------------------
+Release 1.1.1 2021-03-19
+------------------------
 - Added support for IPv6 addresses.
 - Masking the Samba NMB Daemon on Systemd when disabling Netbios over TCP/IP.
 - Removed the Samba SMB and NMB daemons from the "Wants" and "After" list
 in the CID Unit File.
 
-Release 1.1.0 [2020-09-23]
----------------------------
+Release 1.1.0 2020-09-23
+------------------------
 - Fixed quota change checking on updating file shares.
 - Removed the help text in the message of without changes applicable to the
 share on cid CLI.
 - Fixed an incorrect variable replacement failure in the share removal function.
 
-Release 1.0.9 [2020-09-22]
----------------------------
+Release 1.0.9 2020-09-22
+------------------------
 - Fixed filtering of share names and paths with dollar ($).
 
-Release 1.0.8 [2020-09-20]
----------------------------
+Release 1.0.8 2020-09-20
+------------------------
 - Fixed logon with numeric accounts.
 - Fixed management of numerical accounts in the system local groups.
 - Added the additional config file option in the behavior options.
@@ -91,8 +99,8 @@ the options of the share manager.
 system configuration files.
 - Removed the Changelog section of the CID documentation.
 
-Release 1.0.7 [2020-03-25]
----------------------------
+Release 1.0.7 2020-03-25
+------------------------
 - Return of compatibility with Fedora and CentOS.
 - New parameter `localgroups` added to the cid.conf file.
 - New configuration for the pam_winbind module in the PAM authentication stack,
@@ -100,16 +108,16 @@ defining it as the first module to be consulted.
 - Removal of the `Help >> User Manual` option in cid-gtk.
 - Added `Help >> About CID` option in cid-gtk.
 
-Release 1.0.6 [2019-11-12]
----------------------------
+Release 1.0.6 2019-11-12
+------------------------
 - Fixed output of `--version` or `-v` command-line option.
 
-Release 1.0.5 [2019-11-08]
----------------------------
+Release 1.0.5 2019-11-08
+------------------------
 - Removal of "ntp" and "ntpdate" from dependency checking of "INSTALL.sh" script.
 
-Release 1.0.4 [2019-06-02]
----------------------------
+Release 1.0.4 2019-06-02
+------------------------
 - Fixed configuration of shared directory paths with whitespaces.
 - Added Principal Name "MariaDB" to Keytab.
 - Updated the Print Server Configuration.
@@ -118,8 +126,8 @@ Release 1.0.4 [2019-06-02]
 - ntpd replaced by systemd-timesync.
 - Temporarily removed Fedora and CentOS Support.
 
-Release 1.0.3 [2018-07-25]
----------------------------
+Release 1.0.3 2018-07-25
+------------------------
 - Add entire domain groups to the local administrative groups of the stations.
 - Bash Completion Script for cid utility.
 - Substitution of the winbind backend tdb by the autorid in the default
@@ -151,13 +159,13 @@ the ip utility.
 - Added the function of auto-tuning of the permissions in the user's home
 directory during logon.
 
-Release 1.0.2 [2017-08-17]
----------------------------
+Release 1.0.2 2017-08-17
+------------------------
 - Fixed created script to aid transparent authentication in CUPS print jobs
 for smb connections.
 
-Release 1.0.1 [2017-08-05]
----------------------------
+Release 1.0.1 2017-08-05
+------------------------
 - New requirements: su and smbspool commands.
 - Transparent authentication in print jobs over SMB connections:
 - CID corrected the problem of requesting authentication in CUPS print jobs
@@ -169,8 +177,8 @@ it as the user owning the print job instead of root, which allows the
 process to use kerberos methods to authenticate the job.
 Ref: https://sourceforge.net/p/c-i-d/news/2017/08/transparent-authentication-in-print-jobs-over-smb-connections
 
-Release 1.0.0 [2017-07-29]
----------------------------
+Release 1.0.0 2017-07-29
+------------------------
 - Fixed LightDM Greeter's automatic configuration.
 - Fixed the loss of ownership of domain admins group on printer drivers
 directory for Windows clients when a network failure occurs at system boot.
@@ -191,8 +199,8 @@ of some legacy version of the program, you should request contacting the
 developer at the email address: emoraes25@gmail.com.
 Ref: https://sourceforge.net/p/c-i-d/news/2017/07/new-standard-to-versioning
 
-Release 9.1 [2017-06-28]
----------------------------
+Release 9.1 2017-06-28
+------------------------
 - New behavior options added:
   - Share all printers on CUPS in cid-gtk;
   - --share-printers in cid;
@@ -208,8 +216,8 @@ Release 9.1 [2017-06-28]
 "Userfolder" share mode.
 - New requirement: attr.
 
-Release 9.0 [2017-06-07]
----------------------------
+Release 9.0 2017-06-07
+------------------------
 - Changed the script name .logon_(root).sh to logon_root.sh.
 - New requirements: acl, awk, cups, ifconfig, ntp, pkexec, systemd and xhost.
 - Replaced the /usr/share/cid/cid.conf file by the /etc/cid/cid.conf file, and
@@ -239,18 +247,18 @@ parameters found in the cid.conf file.
 directory (the behavior of the sudo command for local users is no longer changed).
 - Replaced the modification in the profile file by a custom file in the profile.d directory.
 
-Release 8.3 [2017-01-24]
----------------------------
+Release 8.3 2017-01-24
+------------------------
 - Fixed the problem of not creating users home directory and not execution of logon
 scripts in the ssh access and with the login program. PAM files desconfigured after boot.
 
-Release 8.2 [2017-01-22]
----------------------------
+Release 8.2 2017-01-22
+------------------------
 - Fixed the problem of not creating users home directory and not execution of logon
 scripts in the ssh access.
 
-Release 8.1 [2017-01-15]
----------------------------
+Release 8.1 2017-01-15
+------------------------
 - Fixed the problem of not creating users home folder and not running logon scripts
 when using the "login" program.
 - Removed blank lines in the output of the `cid usersysgroups list` command.
@@ -258,8 +266,8 @@ when using the "login" program.
 (standard), and change of the date format of the log for the american standard
 (YYYY-MM-DD), to adequate the program for the packaging policies Debian.
 
-Release 8.0 [2016-12-23]
----------------------------
+Release 8.0 2016-12-23
+------------------------
 - Creation of the command-line utilities, and division into 04 executables
 (cid, cid-gtk, cid-change-pass and cid-change-pass-gtk).
 - Creation the Program Metadata Configuration File (/usr/share/cid/cid.conf).
@@ -286,8 +294,8 @@ and derived distributions.
 the privilege of executing the umount command is restricted only to this disassembly,
 and prevent ordinary users from using it to unmount any other filesystem that is mounted.
 
-Release 7.1 [2016-07-24]
----------------------------
+Release 7.1 2016-07-24
+------------------------
 - Inversion in the check logic and update of the manual list of users
 added to the system groups by the cid package post-installation script;
 - Omission of error messages in /etc/profile during offline logins using
@@ -299,8 +307,8 @@ reauthentication for the pam_mount module in /etc/pam.d/common-session;
 - Updating the cid-change-pass script from the terminal interface to the
 graphical interface.
 
-Release 7.0 [2016-06-13]
----------------------------
+Release 7.0 2016-06-13
+------------------------
 - Adding the "winbind expand groups" parameter in /etc/samba/smb.conf to
 the default value of the Samba versions prior to 4.2.x to fix the fault
 in the mappings with the "sgrp" control attribute in pam_mount;
