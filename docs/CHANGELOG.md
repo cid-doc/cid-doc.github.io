@@ -1,3 +1,10 @@
+Release 1.2.1 2021-12-09
+------------------------
+- Fixed bug creating working directories during installation on Fedora.
+- Fixed display of IP addresses in `status` subcommand.
+- Fixed error when leaving the domain in IPv6 networks.
+- Removed user list hiding setting in Lightdm.
+
 Release 1.2.0 2021-11-12
 ------------------------
 - Fixed error showing file selection dialog after selecting
