@@ -118,7 +118,7 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.2.0 #current version
+    $ ver=1.2.1 #current version
     $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
@@ -391,5 +391,5 @@ Being:
 
 <br>
 
->Release 1.2.0 2021-11-12  
+>Release 1.2.1 2021-12-09  
 >Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>
