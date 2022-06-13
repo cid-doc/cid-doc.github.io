@@ -1,3 +1,10 @@
+Release 1.2.2 2022-06-13
+------------------------
+- Added **Hostname** field to `Join the domain` option in cid-gtk.
+- Added **host** argument to `join` subcommand in cid (CLI).
+- Forces mount the *Netlogon* using old versions of the SMB
+protocol (compatible with versions prior to *Windows Server 2012*).
+
 Release 1.2.1 2021-12-09
 ------------------------
 - Fixed bug creating working directories during installation on Fedora.
