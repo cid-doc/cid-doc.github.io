@@ -37,7 +37,6 @@ CID
     - [Automatic mounting of file shares](#map_shares)
     - [Automatic configuration of printers](#map_printers)
 - [Troubleshooting](#Troubleshooting)
-    - [Hostname longer than 15 characters](#Hostname)
     - [Graphic Mode Login Managers](#Login)
     - [Failed to join machines to .local domains](#.local)
 
@@ -48,7 +47,7 @@ You can do things like:
 - Run logon scripts
 - Automatically mount network shares (files and printers)
 - Offline logon (credential cache)
-- Easily grant privileges to domain users (eg: access to the `sudo` command)
+- Easily grant privileges to AD users (eg: access to the `sudo` command)
 - Manage <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> shares (files and printers) through a graphical interface
 - Apply disk quota per shared directory (such as Windows Server)
 
@@ -118,7 +117,7 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.2.1 #current version
+    $ ver=1.2.2 #current version
     $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
@@ -138,6 +137,7 @@ This function allows you to join the Linux computer to an AD domain. For that, i
 | Field                   | Description |
 | ----------------------- | ----------- |
 | **Domain**              | Domain name (FQDN). |
+| **Hostname** | Name for computer account that will be created in AD. If not specified, the account will be created with the same hostname defined in the system. |
 | **Organizational Unit** | Optionally, you can specify an Organizational Unit where the computer account will must be created when join it the domain. If the OU is not entered or is not found, the computer account will be created in the default container (computers). |
 | **User**                | Domain administrator user. |
 | **Password**            | User password. |
@@ -373,9 +373,6 @@ Generally, printer management is only allowed for the root user or users who are
 ## Troubleshooting <a name="Troubleshooting" />
 This section describes known cases related to the program.
 
-### Hostname longer than 15 characters <a name="Hostname" />
-Due to a limitation inherited from the NetBIOS API, hostnames cannot contain more than 15 characters (more information <a href="https://support.microsoft.com/en-us/kb/909264">here</a>). If necessary, adjust the hostname of the Linux computer before attempting to join the domain.
-
 ### Graphic Mode Login Managers <a name="Login" />
 In certain Linux distributions, some login managers in their default configuration do not list users who are in a remote source and/or do not have options so that the credentials of those users can be informed through a prompt or text box. In such cases you should consult the manual of your distribution or of the login manager in question to see if these options are available and what settings should be made. If necessary, install a new graphical login manager.
 
@@ -391,5 +388,5 @@ Being:
 
 <br>
 
->Release 1.2.1 2021-12-09  
->Copyright (C) 2012-2021 Eduardo Moraes <<emoraes25@gmail.com>>
+>Release 1.2.2 2022-06-13  
+>Copyright (C) 2012-2022 Eduardo Moraes <<emoraes25@gmail.com>>
