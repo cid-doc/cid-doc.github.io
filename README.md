@@ -39,6 +39,7 @@ CID
 - [Troubleshooting](#Troubleshooting)
     - [Graphic Mode Login Managers](#Login)
     - [Failed to join machines to .local domains](#.local)
+    - [Numeric users login failed](#numericuser)
 
 ## Description <a name="Description" />
 **CID** (*Closed In Directory*) is a set of bash scripts for inserting and managing Linux computers in <a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview">Active Directory (AD)</a> domains. Modifications made to the system allow Linux to behave like a Windows computer within AD.  
@@ -385,6 +386,11 @@ Being:
 
 - **192.168.25.25** the IP of the DC;
 - **example.local** the domain name;
+
+### Numeric users login failed <a name="numericuser" />
+Since the <a href="https://github.com/systemd/systemd">systemd</a> session manager stopped supporting user accounts whose login consists only of numbers (<a href="https://github.com/systemd/systemd/issues/15141">bug #15141</a>), it has been a problem for AD administrators to make it possible to log on of accounts with this format on Linux computers integrated into AD, either through CID or other similar tools. Fortunately, there is an unusual way to resolve this issue!
+
+In the CID, you can enable the `Do not use domain as default` option among the join options of the **Advanced mode** or the **Change station behavior** option, if the computer is already in AD. You can also use the `--no-defaultdomain` option along with the `join` subcommand on the command line (eg: `cid join -p --no-defaultdomain`). This will cause user accounts to be identified on the system with the format **DOMAIN\username**, which ensures that there are non-numeric characters as well. The bad part is that this implies in the user must always enter the domain along with the username to log on, either in the UPN format (**username@fqdn**) or in the low-level login name format itself (**DOMAIN\username**).
 
 <br>
 
