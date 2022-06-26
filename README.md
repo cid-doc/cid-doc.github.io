@@ -3,7 +3,7 @@ CID
 
 **License: [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)**  
 
-[Homepage](https://c-i-d.sourceforge.io) | [Discussion](https://sourceforge.net/p/c-i-d/discussion/) | [Donations](https://sourceforge.net/p/c-i-d/donate) | [Changelog](docs/CHANGELOG.md)  
+[Homepage](https://c-i-d.sourceforge.io) | [Discussion](https://sourceforge.net/p/c-i-d/discussion/) | [Donations](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UA5SSGEKPUXPQ&lc=US&item_name=Closed%20In%20Directory&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted) | [Changelog](docs/CHANGELOG.md)  
 
 
 ## Contents
