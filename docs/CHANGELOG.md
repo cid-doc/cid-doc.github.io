@@ -1,3 +1,8 @@
+Release 1.2.3 2022-07-13
+------------------------
+- Fixed bug in Get_DomainIP function.
+- Fixed bug in Mount_Netlogon function.
+
 Release 1.2.2 2022-06-13
 ------------------------
 - Added **Hostname** field to `Join the domain` option in cid-gtk.
