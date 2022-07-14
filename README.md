@@ -105,7 +105,6 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 
     $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
     $ sudo dnf config-manager --add-repo https://downloads.sf.net/c-i-d/pkgs/rpm/cid.repo
-    $ sudo dnf clean all
     $ sudo dnf install cid
 
 ### OpenSUSE <a name="OpenSUSE" />
@@ -118,7 +117,7 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.2.2 #current version
+    $ ver=1.2.3 #current version
     $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
@@ -394,5 +393,5 @@ In the CID, you can enable the `Do not use domain as default` option among the j
 
 <br>
 
->Release 1.2.2 2022-06-13  
+>Release 1.2.3 2022-07-13  
 >Copyright (C) 2012-2022 Eduardo Moraes <<emoraes25@gmail.com>>
