@@ -34,7 +34,7 @@ CID
 - [CID Init Script](#CIS)
 - [Logon scripts](#Logon_scripts)
     - [logon.sh and logon_root.sh](#logon_lroot.sh)
-    - [Automatic mounting of file shares](#map_shares)
+    - [Automatic mounting of shared folders](#map_shares)
     - [Automatic configuration of printers](#map_printers)
 - [Troubleshooting](#Troubleshooting)
     - [Graphic Mode Login Managers](#Login)
@@ -46,10 +46,11 @@ CID
 
 You can do things like:  
 - Run logon scripts
-- Automatically mount network shares (files and printers)
-- Offline logon (credential cache)
-- Easily grant privileges to AD users (eg: access to the `sudo` command)
-- Manage <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> shares (files and printers) through a graphical interface
+- Automatic mounting of network drives (shared folders)
+- Automatic configuration of the printers
+- Offline logon
+- Automatic granting of privileges to users (eg access to the `sudo` command)
+- GUI and CLI tools for managing the <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> server (File and/or Print Server role)
 - Apply disk quota per shared directory (such as Windows Server)
 
 CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gtk) and [cid-change-pass-gtk](#ccp_ccp-gtk)) and two CLI utilities ([cid](#cid) and [cid-change-pass](#ccp_ccp-gtk)). Both pairs contain equivalent features and they all accept the following general options as a argument in the command line:  
@@ -111,7 +112,6 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 
     $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
     $ sudo zypper ar https://downloads.sf.net/c-i-d/pkgs/rpm/cid.repo
-    $ sudo zypper ref
     $ sudo zypper in cid
 
 ### Other distros <a name="Other" />
@@ -339,8 +339,8 @@ In both scripts, in addition to the known bash variables, you can use the follow
 | **USERGROUP**   | Primary group name of the user that is opening session. |
 | **USERGROUPS**  | Group list separated by commas (**,**) of the user that is opening session. |
 
-### Automatic mounting of file shares <a name="map_shares" />
-The automatic mounting of file shares during users logon can be performed through the **pam_mount** module.  
+### Automatic mounting of shared folders <a name="map_shares" />
+The automatic mounting of shared folders during users logon can be performed through the **pam_mount** module.  
 
 <a href="http://pam-mount.sourceforge.net/">Pam_mount</a> is a library that allows you to mount a file system transparently through PAM authentication. In general, the file systems to be mounted are defined in your global configuration file (usually `/etc/security/pam_mount.conf.xml`). The **shares.xml** file is nothing more than a copy of this file stored on Netlogon, which replaces the original configuration file on Linux computers of the domain during users logon. In this way, all configuration can be centralized in this single file to be applied to all theses computers.  
 
