@@ -49,7 +49,7 @@ You can do things like:
 - Automatic mounting of network drives (shared folders)
 - Automatic configuration of the printers
 - Offline logon
-- Automatic granting of privileges to users (eg access to the `sudo` command)
+- Automatic granting of privileges to users (e.g. access to the `sudo` command)
 - GUI and CLI tools for managing the <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> server (File and/or Print Server role)
 - Apply disk quota per shared directory (such as Windows Server)
 
