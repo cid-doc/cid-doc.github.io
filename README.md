@@ -117,7 +117,7 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
-    $ ver=1.2.3 #current version
+    $ ver='x.x.x' #current version
     $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
@@ -393,5 +393,5 @@ In the CID, you can enable the `Do not use domain as default` option among the j
 
 <br>
 
->Release 1.2.3 2022-07-13  
+>Release 1.2.4 2022-07-23  
 >Copyright (C) 2012-2022 Eduardo Moraes <<emoraes25@gmail.com>>
