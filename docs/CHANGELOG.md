@@ -1,3 +1,7 @@
+Release 1.2.4 2022-07-23
+------------------------
+- Added support to logon scripts for TDM and CDM login managers.
+
 Release 1.2.3 2022-07-13
 ------------------------
 - Fixed bug in Get_DomainIP function.
