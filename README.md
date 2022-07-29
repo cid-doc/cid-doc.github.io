@@ -50,7 +50,7 @@ You can do things like:
 - Automatic configuration of the printers
 - Offline logon
 - Automatic granting of privileges to users (e.g. access to the `sudo` command)
-- GUI and CLI tools for managing the <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> server (File and/or Print Server role)
+- GUI and CLI tools for managing the <a href="https://wiki.samba.org/index.php/Main_Page">Samba</a> server (File and Print Server)
 - Apply disk quota per shared directory (such as Windows Server)
 
 CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gtk) and [cid-change-pass-gtk](#ccp_ccp-gtk)) and two CLI utilities ([cid](#cid) and [cid-change-pass](#ccp_ccp-gtk)). Both pairs contain equivalent features and they all accept the following general options as a argument in the command line:  
