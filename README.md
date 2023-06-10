@@ -1,4 +1,4 @@
-CID
+[CID](https://cid-doc.github.io/)
 ===
 
 **License: [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)**  
@@ -346,17 +346,25 @@ The automatic mounting of shared folders during users logon can be performed thr
 
 The file systems to be mounted are defined in `<volume ...>` tags. The default shares.xml file contains some examples of defining common SMB shares, such as:
 
-	<!-- Mounting a public share (full access to everyone) -->
-	<volume fstype="cifs" server="fileserver" path="PUBLIC" mountpoint="~/PUBLIC" />
+	<!-- Mounting the 'public' share -->
+	<volume fstype="cifs" server="fileserver" path="public" mountpoint="~/public" />
 
-	<!-- Mounting user folder (a "homes" section created by CID on Samba) -->
+	<!-- Mounting the user's network folder -->
 	<volume fstype="cifs" server="fileserver" path="%(USER)" mountpoint="~/MyNetFolder" />
 
-	<!-- Conditional mounting to the ITD group domain -->
-	<volume sgrp="itd" fstype="cifs" server="fileserver" path="ITD$" mountpoint="~/ITD" />
+	<!-- Mounting the 'IT$' share for 'ITD' group users -->
+	<volume sgrp="itd" fstype="cifs" server="fileserver" path="it$" mountpoint="~/IT" />
 
-	<!-- Conditional mounting to a ITD group of other trusted domain -->
-	<volume sgrp="SAMPLE\itd" fstype="cifs" server="fileserver" path="ITD$" mountpoint="~/ITD" options="domain=SAMPLE" />
+	<!-- Mounting the 'HR' share for users in the 'HRD' group of the 'SAMPLE' trusted domain -->
+	<volume sgrp="SAMPLE\hrd" fstype="cifs" server="fileserver" path="hr$" mountpoint="~/HR" options="domain=SAMPLE" />
+
+	<!-- Mounting the 'cameras' share for users in the 'security' or 'monitors' group of the 'example.com' domain -->
+	<volume fstype="cifs" server="fileserver" path="cameras" mountpoint="~/cameras" options="domain=example.com">
+		<or>
+			<sgrp>security</sgrp>
+			<sgrp>monitors</sgrp>
+		</or>
+	</volume>
 
 See the <a href="http://pam-mount.sourceforge.net/pam_mount.conf.5.html">pam_mount documentation</a> for more information on its configuration.
 
