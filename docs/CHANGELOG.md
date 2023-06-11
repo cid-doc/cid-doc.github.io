@@ -1,3 +1,10 @@
+Release 1.2.5 2023-06-11
+------------------------
+- scripts_cid folder replaced with cid folder in Netlogon.
+- Adjusted the **winbind request timeout** parameter in smb.conf
+from 60s (default) to 5s for a better response to applications
+contacting the *Winbindd* daemon in offline environments.
+
 Release 1.2.4 2022-07-23
 ------------------------
 - Added support to logon scripts for TDM and CDM login managers.
