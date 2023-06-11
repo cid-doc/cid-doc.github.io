@@ -404,5 +404,5 @@ In the CID, you can enable the `Do not use domain as default` option among the j
 
 <br>
 
->Release 1.2.4 2022-07-23  
->Copyright (C) 2012-2022 Eduardo Moraes <<emoraes25@gmail.com>>
+>Release 1.2.5 2023-06-11  
+>Copyright (C) 2012-2023 Eduardo Moraes <<emoraes25@gmail.com>>
