@@ -97,8 +97,9 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 
 ### Debian <a name="Debian" />
 
-    $ wget -O - https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY | sudo apt-key add -
-    $ echo 'deb https://downloads.sf.net/c-i-d/pkgs/apt/debian sid main' | sudo tee /etc/apt/sources.list.d/cid.list
+    $ [ -d /etc/apt/keyrings ] || sudo mkdir -m0755 -p /etc/apt/keyrings
+    $ sudo wget -O /etc/apt/keyrings/cid-archive-keyring.pgp https://downloads.sf.net/c-i-d/pkgs/apt/debian/cid-archive-keyring.pgp
+    $ sudo wget -O /etc/apt/sources.list.d/cid.sources https://downloads.sf.net/c-i-d/pkgs/apt/debian/cid.sources
     $ sudo apt update
     $ sudo apt install cid cid-gtk
 
@@ -318,7 +319,9 @@ The CID can configure the Linux computer to allow bash scripts stored on the **N
 
 Basically the process consists of mounting the Netlogon on local file system, and then executed the scripts in the system shell. In the end, Netlogon is unmounted again. All of this is done automatically and transparently to the user.
 
-If the `Disable logon scripts` option is not enabled (see [Advanced mode](#advanced)), during the system [joining the domain](#join), and if it does not already exist, the CID tries to export to Netlogon a default copy of the **scripts_cid** directory using the credentials of the domain administrator user used to the join. This copy is provided with the program's source package and is installed in the `/usr/share/cid/templates` directory. This directory contains two bash scripts ([logon.sh and logon_root.sh](#logon_lroot.sh)) and the [shares.xml](#map_shares) file. See the details about these files in the next subsections!
+If the `Disable logon scripts` option is not enabled (see [Advanced mode](#advanced)), during the system [joining the domain](#join), and if it does not already exist, the CID tries to export to Netlogon a template of this scripts using the credentials of the domain administrator user used to the join. This files is provided with the program’s source package and is installed in the `/usr/share/cid/templates` directory. See the details about the scripts in the next subsections!
+
+>**Note:** The scripts were stored in the **scripts_cid** folder in _Netlogon_. As of version **1.2.5** this folder has been renamed to **cid** only!
 
 ### logon.sh and logon_root.sh <a name="logon_lroot.sh" />
 The **logon_root.sh** is the bash script executed with the **root user UID**, which grants privileges for the execution of routines that require the powers of the superuser. It is executed **before** logon.sh.  
