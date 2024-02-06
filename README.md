@@ -98,28 +98,28 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ### Debian <a name="Debian" />
 
     $ [ -d /etc/apt/keyrings ] || sudo mkdir -m0755 -p /etc/apt/keyrings
-    $ sudo wget -O /etc/apt/keyrings/cid-archive-keyring.pgp https://downloads.sf.net/c-i-d/pkgs/apt/debian/cid-archive-keyring.pgp
-    $ sudo wget -O /etc/apt/sources.list.d/cid.sources https://downloads.sf.net/c-i-d/pkgs/apt/debian/cid.sources
+    $ sudo wget -O /etc/apt/keyrings/cid-archive-keyring.pgp https://c-i-d.sourceforge.io/keys/cid-archive-keyring.pgp
+    $ sudo wget -O /etc/apt/sources.list.d/cid.sources https://c-i-d.sourceforge.io/repo/apt/debian/cid.sources
     $ sudo apt update
     $ sudo apt install cid cid-gtk
 
 ### Fedora <a name="Fedora" />
 
-    $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
-    $ sudo dnf config-manager --add-repo https://downloads.sf.net/c-i-d/pkgs/rpm/cid.repo
+    $ sudo rpm --import https://c-i-d.sourceforge.io/keys/CID-GPG-KEY
+    $ sudo dnf config-manager --add-repo https://c-i-d.sourceforge.io/repo/rpm/cid.repo
     $ sudo dnf install cid
 
 ### OpenSUSE <a name="OpenSUSE" />
 
-    $ sudo rpm --import https://downloads.sf.net/c-i-d/docs/CID-GPG-KEY
-    $ sudo zypper ar https://downloads.sf.net/c-i-d/pkgs/rpm/cid.repo
+    $ sudo rpm --import https://c-i-d.sourceforge.io/keys/CID-GPG-KEY
+    $ sudo zypper ar https://c-i-d.sourceforge.io/repo/rpm/cid.repo
     $ sudo zypper in cid
 
 ### Other distros <a name="Other" />
 After installing the [requirements](#Requirements), download the tarball, unzip it and run as **root** the **INSTALL.sh** script. You can use the following commands:
 
     $ ver='x.x.x' #current version
-    $ wget https://downloads.sf.net/c-i-d/cid-${ver}.tar.gz    
+    $ wget https://downloads.sf.net/c-i-d/files/cid-${ver}.tar.gz    
     $ tar -xzf cid-${ver}.tar.gz
     $ cd cid-${ver}
     $ sudo ./INSTALL.sh
