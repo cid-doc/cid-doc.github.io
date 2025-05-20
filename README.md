@@ -10,7 +10,7 @@
 - [Description](#Description)
 - [Requirements](#Requirements)
 - [Installation](#Installation)
-    - [Ubuntu (18.04, 20.04 and 24.04)](#Ubuntu)
+    - [Ubuntu (From 18.04 LTS to 24.04 LTS)](#Ubuntu)
     - [Debian](#Debian)
     - [Fedora](#Fedora)
     - [OpenSUSE](#OpenSUSE)
