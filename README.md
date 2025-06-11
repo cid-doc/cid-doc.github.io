@@ -10,7 +10,7 @@
 - [Description](#Description)
 - [Requirements](#Requirements)
 - [Installation](#Installation)
-    - [Ubuntu (From 18.04 LTS to 24.04 LTS)](#Ubuntu)
+    - [Ubuntu](#Ubuntu)
     - [Debian](#Debian)
     - [Fedora](#Fedora)
     - [OpenSUSE](#OpenSUSE)
@@ -73,7 +73,7 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 - gzip (= any)
 - hostname (= any)
 - iproute[2] (= any)
-- Kerberos V5 (>= 1.13)
+- Kerberos (>= 1.13)
 - keyutils (= any)
 - mount (= any)
 - pam_mount (>= 2.14)
@@ -83,7 +83,8 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 - Samba (>= 4.3.11)
 - sed (= any)
 - sudo (= any)
-- systemd (= any)
+- Systemd (= any)
+- Winbind (>= 4.3.11)
 - xhost (= any)
 - zenity (>= 3.18.1)
 
@@ -91,28 +92,27 @@ CID consists of four main tools subdivided into two GUI tools ([cid-gtk](#cid-gt
 ## Installation <a name="Installation" />
 ### Ubuntu <a name="Ubuntu" />
 
-    $ sudo add-apt-repository ppa:emoraes25/cid
-    $ sudo apt update
-    $ sudo apt install cid cid-gtk
+    $ sudo add-apt-repository -y ppa:emoraes25/cid
+    $ sudo apt update && sudo apt -y install cid cid-gtk
 
 ### Debian <a name="Debian" />
 
-    $ [ -d /etc/apt/keyrings ] || sudo mkdir -m0755 -p /etc/apt/keyrings
-    $ sudo wget -O /etc/apt/keyrings/cid-archive-keyring.pgp https://c-i-d.sourceforge.io/keys/cid-archive-keyring.pgp
-    $ sudo wget -O /etc/apt/sources.list.d/cid.sources https://c-i-d.sourceforge.io/repo/apt/debian/cid.sources
-    $ sudo apt update
-    $ sudo apt install cid cid-gtk
+    $ keys_dir='/etc/apt/keyrings' ; repos_dir="${keys_dir%/*}/sources.list.d"
+    $ [ -d "$keys_dir" ] || sudo mkdir -m0755 -p "$keys_dir"
+    $ wget -qO - https://cid-doc.github.io/keys/CID-GPG-KEY | sudo gpg --dearmor -o "${keys_dir}/cid-archive-keyring.pgp"
+    $ sudo wget -qO "${repos_dir}/cid.sources" https://cid-doc.github.io/docs/cid.sources
+    $ sudo apt update && sudo apt -y install cid cid-gtk
 
 ### Fedora <a name="Fedora" />
 
-    $ sudo rpm --import https://c-i-d.sourceforge.io/keys/CID-GPG-KEY
-    $ sudo dnf config-manager --add-repo https://c-i-d.sourceforge.io/repo/rpm/cid.repo
+    $ sudo rpm --import https://cid-doc.github.io/keys/CID-GPG-KEY
+    $ sudo dnf config-manager addrepo --from-repofile=https://cid-doc.github.io/docs/cid.repo
     $ sudo dnf install cid
 
 ### OpenSUSE <a name="OpenSUSE" />
 
-    $ sudo rpm --import https://c-i-d.sourceforge.io/keys/CID-GPG-KEY
-    $ sudo zypper ar https://c-i-d.sourceforge.io/repo/rpm/cid.repo
+    $ sudo rpm --import https://cid-doc.github.io/keys/CID-GPG-KEY
+    $ sudo zypper ar https://cid-doc.github.io/docs/cid.repo
     $ sudo zypper in cid
 
 ### Other distros <a name="Other" />
@@ -404,5 +404,5 @@ In the CID, you can enable the `Do not use domain as default` option among the j
 
 <br>
 
->Release 1.2.5 2023-06-11  
->Copyright (C) 2012-2023 Eduardo Moraes <<emoraes25@gmail.com>>
+>Release 1.2.6 2025-06-11  
+>Copyright (C) 2012-2025 Eduardo Moraes <<emoraes25@gmail.com>>
