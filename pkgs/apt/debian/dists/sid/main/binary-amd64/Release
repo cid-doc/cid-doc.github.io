@@ -1,0 +1,5 @@
+Component: main
+Origin: CID
+Label: Closed In Directory
+Architecture: amd64
+Description: Debian repository for CID project

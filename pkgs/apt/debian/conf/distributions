@@ -1,0 +1,7 @@
+Origin: CID
+Label: Closed In Directory
+Codename: sid
+Architectures: i386 amd64
+Components: main
+Description: Debian repository for CID project
+SignWith: C70D34CD36BBB117A577AA4EEE7C7C673FFC08AD

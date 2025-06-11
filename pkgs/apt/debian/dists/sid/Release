@@ -1,0 +1,28 @@
+Origin: CID
+Label: Closed In Directory
+Codename: sid
+Date: Sun, 11 Jun 2023 19:27:08 UTC
+Architectures: i386 amd64
+Components: main
+Description: Debian repository for CID project
+MD5Sum:
+ 6441a4591de24ddf42a13de145e716a0 3222 main/binary-i386/Packages
+ 6af5ec6129d7486812d1e7fe9ec3325f 1215 main/binary-i386/Packages.gz
+ 6ae5443a97172ae7c8683c2c857aaf1b 121 main/binary-i386/Release
+ 6441a4591de24ddf42a13de145e716a0 3222 main/binary-amd64/Packages
+ 6af5ec6129d7486812d1e7fe9ec3325f 1215 main/binary-amd64/Packages.gz
+ 38bd822b6ec1b9be4713b113b1f97650 122 main/binary-amd64/Release
+SHA1:
+ d23274213cce817699096fd31d919742e28d4408 3222 main/binary-i386/Packages
+ 997fd24593de2149959786cd3dca236a783434b5 1215 main/binary-i386/Packages.gz
+ 6c3af03ed63705fd3ae2e068fd7221de77bae53f 121 main/binary-i386/Release
+ d23274213cce817699096fd31d919742e28d4408 3222 main/binary-amd64/Packages
+ 997fd24593de2149959786cd3dca236a783434b5 1215 main/binary-amd64/Packages.gz
+ a49f9363a8d0bc151a7cb191c020a499de4562b3 122 main/binary-amd64/Release
+SHA256:
+ 561ab14257423c91157a25e798f25b4946de85b6a41fdde43134be1b5388d248 3222 main/binary-i386/Packages
+ bdf79ebbcf68ee459a723f61734eed0be7e51f68722574b6591253e818f15eb6 1215 main/binary-i386/Packages.gz
+ baf2ea7371c8210ad4ab76abdf9b36f8b81a85ab34e2a85f0d06fe99573ae0c9 121 main/binary-i386/Release
+ 561ab14257423c91157a25e798f25b4946de85b6a41fdde43134be1b5388d248 3222 main/binary-amd64/Packages
+ bdf79ebbcf68ee459a723f61734eed0be7e51f68722574b6591253e818f15eb6 1215 main/binary-amd64/Packages.gz
+ f4480dcb2942b3eac4873e5a41dcbfb43fe910b8c6f4a5cedb855c3d4a5ca8f3 122 main/binary-amd64/Release

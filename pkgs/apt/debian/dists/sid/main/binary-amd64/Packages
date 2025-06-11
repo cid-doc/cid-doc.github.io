@@ -1,0 +1,83 @@
+Package: cid
+Version: 1.2.5-1
+Architecture: all
+Maintainer: Eduardo Moraes <emoraes25@gmail.com>
+Installed-Size: 67
+Depends: cid-base
+Suggests: bash-completion, cid-gtk
+Homepage: https://c-i-d.sourceforge.io
+Priority: optional
+Section: misc
+Filename: pool/main/c/cid/cid_1.2.5-1_all.deb
+Size: 24360
+SHA256: 5a1f766fd066c8c63c4f449970648f314caa94ce8eb04dccadc60e8c15b6cc7e
+SHA1: e39445f93d00eb70b8748172abd801f0a95a8ce2
+MD5sum: c1501aa3ec6535071b317548a57e7fae
+Description: CLI for inserting and managing Linux computers in AD domains
+ This is part of the CID (Closed In Directory), which is a set of bash
+ scripts for inserting and managing Linux computers in Active Directory
+ domains.
+ .
+ Modifications made to the system allow Linux to behave like a Windows
+ computer within AD.
+ .
+ This package provides the CID command-line tools (cid and cid-change-pass),
+ which allow you to intuitively manage your Linux computer in AD.
+
+Package: cid-base
+Source: cid
+Version: 1.2.5-1
+Architecture: all
+Maintainer: Eduardo Moraes <emoraes25@gmail.com>
+Installed-Size: 150
+Depends: acl, attr, cifs-utils (>= 6.4), cups-client, cups-daemon, iproute2, iputils-ping, keyutils, krb5-user (>= 1.13), libnss-winbind (>= 4.3.11), libpam-mount (>= 2.14), libpam-winbind (>= 4.3.11), passwd, samba (>= 4.3.11), samba-dsdb-modules (>= 4.3.11), samba-vfs-modules (>= 4.3.11), smbclient (>= 4.3.11), sudo, systemd
+Recommends: bc, python3-smbc, xfsprogs
+Homepage: https://c-i-d.sourceforge.io
+Priority: optional
+Section: misc
+Filename: pool/main/c/cid/cid-base_1.2.5-1_all.deb
+Size: 36224
+SHA256: 9e1b94ac04e62f4d79a0e11bbbd66241092fd5118d9ff275d03f918740d6f726
+SHA1: 148dc04db4cedc8f5d73efbb512fc20977201760
+MD5sum: 86fcfbb1e63ea07e9a97a111d37e0829
+Description: Base files for cid and cid-gtk packages
+ This is part of the CID (Closed In Directory), which is a set of bash
+ scripts for inserting and managing Linux computers in Active Directory
+ domains.
+ .
+ Modifications made to the system allow Linux to behave like a Windows
+ computer within AD.
+ .
+ This package contains base files and scripts with functions used by the
+ CID tools. It is also responsible for installing the main dependencies
+ required to CID.
+
+Package: cid-gtk
+Source: cid
+Version: 1.2.5-1
+Architecture: all
+Maintainer: Eduardo Moraes <emoraes25@gmail.com>
+Installed-Size: 120
+Depends: cid-base, policykit-1, x11-xserver-utils, zenity (>= 3.18.1)
+Recommends: cid
+Suggests: dconf-tools, libglib2.0-bin
+Homepage: https://c-i-d.sourceforge.io
+Priority: optional
+Section: misc
+Filename: pool/main/c/cid/cid-gtk_1.2.5-1_all.deb
+Size: 73328
+SHA256: cb5e8ae703829515e531f404919d58e22812b8da3ef4802360c5a72ea6e5541a
+SHA1: 5d053d80aea6758719e61c06373a621554286117
+MD5sum: 7c9215fc10045b38f417928f23d185f4
+Description: GUI for inserting and managing Linux computers in AD domains
+ This is part of the CID (Closed In Directory), which is a set of bash
+ scripts for inserting and managing Linux computers in Active Directory
+ domains.
+ .
+ Modifications made to the system allow Linux to behave like a Windows
+ computer within AD.
+ .
+ This package provides the CID graphical tools (cid-gtk and
+ cid-change-pass-gtk), which allow you to intuitively manage your Linux
+ computer in AD.
+

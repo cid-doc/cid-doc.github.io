@@ -1,0 +1,6 @@
+Types: deb
+URIs: https://cid-doc.github.io/pkgs/apt/debian
+Suites: sid
+Architectures: i386 amd64
+Components: main
+Signed-By: /etc/apt/keyrings/cid-archive-keyring.pgp

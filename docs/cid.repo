@@ -1,0 +1,6 @@
+[cid]
+name=CID Repo
+baseurl=https://cid-doc.github.io/pkgs/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://cid-doc.github.io/keys/CID-GPG-KEY
