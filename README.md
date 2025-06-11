@@ -301,7 +301,7 @@ The parameters in this file are declared as bash variables in the following form
 
 Note that there should be no spaces between the **equal sign (=)** that separates the parameter from its corresponding value. Some parameters admit more than one value, and in these cases, the values must be separated by a **single space**, but between **single quotes (')** or **double quotes (")**, which are mandatory if _environment variables_ are used in the value of a parameter.
 
-Lines that start with a **hashtag (#)** are just comments and are not interpreted by the program. The original file of the package contains all accepted parameters accompanied by comments that describe them widely. You can access a copy of this file at this <a href="docs/cid.conf">link</a>.
+Lines that start with a **hashtag (#)** are just comments and are not interpreted by the program. The original file of the package contains all accepted parameters accompanied by comments that describe them widely. You can access a copy of this file at this <a href="docs/cid.conf.example">link</a>.
 
 >**Note:** Modifications made to the file after the system has already been joined to a domain will only be applied if you reload the [CID Init Script](#CIS) with the command: `systemctl reload cid`.
 
