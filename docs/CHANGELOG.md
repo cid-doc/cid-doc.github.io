@@ -1,3 +1,12 @@
+Release 1.2.6 2025-06-11
+------------------------
+- Removed blank lines in the IP listing of the `cid status` command.
+- Removes old DNS records during DNS dynamic update.
+- Shows the current OU or container of the computer in the 
+`cid status` command or in the `Help >> Station info` option.
+- Fixed broken dependency in packaging for Ubuntu higher than 24.04.
+- Changed the address of package repositories from SourceForge to Github.
+
 Release 1.2.5 2023-06-11
 ------------------------
 - scripts_cid folder replaced with cid folder in Netlogon.

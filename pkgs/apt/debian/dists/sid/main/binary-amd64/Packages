@@ -1,18 +1,18 @@
 Package: cid
-Version: 1.2.5-1
+Version: 1.2.6-1
 Architecture: all
 Maintainer: Eduardo Moraes <emoraes25@gmail.com>
-Installed-Size: 67
+Installed-Size: 68
 Depends: cid-base
 Suggests: bash-completion, cid-gtk
 Homepage: https://c-i-d.sourceforge.io
 Priority: optional
 Section: misc
-Filename: pool/main/c/cid/cid_1.2.5-1_all.deb
-Size: 24360
-SHA256: 5a1f766fd066c8c63c4f449970648f314caa94ce8eb04dccadc60e8c15b6cc7e
-SHA1: e39445f93d00eb70b8748172abd801f0a95a8ce2
-MD5sum: c1501aa3ec6535071b317548a57e7fae
+Filename: pool/main/c/cid/cid_1.2.6-1_all.deb
+Size: 24528
+SHA256: 9464afe9fb3c01671a9855329241709e56af47e088c5a1c70b75cd1490b4d6b1
+SHA1: 778f126b65c39ab92fe3ce6a8c6e014c59e97fdb
+MD5sum: bba25c51e161f952963bd7c9723ee1ca
 Description: CLI for inserting and managing Linux computers in AD domains
  This is part of the CID (Closed In Directory), which is a set of bash
  scripts for inserting and managing Linux computers in Active Directory
@@ -26,20 +26,20 @@ Description: CLI for inserting and managing Linux computers in AD domains
 
 Package: cid-base
 Source: cid
-Version: 1.2.5-1
+Version: 1.2.6-1
 Architecture: all
 Maintainer: Eduardo Moraes <emoraes25@gmail.com>
-Installed-Size: 150
+Installed-Size: 152
 Depends: acl, attr, cifs-utils (>= 6.4), cups-client, cups-daemon, iproute2, iputils-ping, keyutils, krb5-user (>= 1.13), libnss-winbind (>= 4.3.11), libpam-mount (>= 2.14), libpam-winbind (>= 4.3.11), passwd, samba (>= 4.3.11), samba-dsdb-modules (>= 4.3.11), samba-vfs-modules (>= 4.3.11), smbclient (>= 4.3.11), sudo, systemd
 Recommends: bc, python3-smbc, xfsprogs
 Homepage: https://c-i-d.sourceforge.io
 Priority: optional
 Section: misc
-Filename: pool/main/c/cid/cid-base_1.2.5-1_all.deb
-Size: 36224
-SHA256: 9e1b94ac04e62f4d79a0e11bbbd66241092fd5118d9ff275d03f918740d6f726
-SHA1: 148dc04db4cedc8f5d73efbb512fc20977201760
-MD5sum: 86fcfbb1e63ea07e9a97a111d37e0829
+Filename: pool/main/c/cid/cid-base_1.2.6-1_all.deb
+Size: 36556
+SHA256: 9d06fa3eabe213f9803f82ec3b49950cdd1627cfc14093cab8d4b785a33e80f8
+SHA1: a5404efd1ea21fcbec94681d950e88254055f5fe
+MD5sum: 2dc29aef893abdfc31100433e8e3eb6c
 Description: Base files for cid and cid-gtk packages
  This is part of the CID (Closed In Directory), which is a set of bash
  scripts for inserting and managing Linux computers in Active Directory
@@ -54,21 +54,21 @@ Description: Base files for cid and cid-gtk packages
 
 Package: cid-gtk
 Source: cid
-Version: 1.2.5-1
+Version: 1.2.6-1
 Architecture: all
 Maintainer: Eduardo Moraes <emoraes25@gmail.com>
-Installed-Size: 120
-Depends: cid-base, policykit-1, x11-xserver-utils, zenity (>= 3.18.1)
+Installed-Size: 121
+Depends: cid-base, policykit-1 | pkexec, x11-xserver-utils, zenity (>= 3.18.1)
 Recommends: cid
 Suggests: dconf-tools, libglib2.0-bin
 Homepage: https://c-i-d.sourceforge.io
 Priority: optional
 Section: misc
-Filename: pool/main/c/cid/cid-gtk_1.2.5-1_all.deb
-Size: 73328
-SHA256: cb5e8ae703829515e531f404919d58e22812b8da3ef4802360c5a72ea6e5541a
-SHA1: 5d053d80aea6758719e61c06373a621554286117
-MD5sum: 7c9215fc10045b38f417928f23d185f4
+Filename: pool/main/c/cid/cid-gtk_1.2.6-1_all.deb
+Size: 73508
+SHA256: c9b6476cb16e98dfc0199f8db186638b811ebf75dca6670e4be4852276af1fbc
+SHA1: dcbd57a4b1792e72319034dc37abac3e2d9034e5
+MD5sum: b467fe380e467912c6e61716f2f942df
 Description: GUI for inserting and managing Linux computers in AD domains
  This is part of the CID (Closed In Directory), which is a set of bash
  scripts for inserting and managing Linux computers in Active Directory
